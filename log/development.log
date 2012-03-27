@@ -1,0 +1,40 @@
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-27 12:34:03 -0400
+Served asset /rails.png - 200 OK (15ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-27 12:40:58 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Compiled home.css  (31ms)  (pid 91728)
+Compiled application.css  (41ms)  (pid 91728)
+Compiled jquery.js  (4ms)  (pid 91728)
+Compiled jquery_ujs.js  (0ms)  (pid 91728)
+Compiled home.js  (211ms)  (pid 91728)
+Compiled application.js  (273ms)  (pid 91728)
+Completed 200 OK in 388ms (Views: 387.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-27 12:40:58 -0400
+Served asset /application.css - 200 OK (118ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-27 12:40:59 -0400
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-03-27 12:40:59 -0400
+Served asset /home.css - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-27 12:40:59 -0400
+Served asset /application.js - 200 OK (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-27 12:40:59 -0400
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-03-27 12:40:59 -0400
+Served asset /home.js - 200 OK (1ms)
