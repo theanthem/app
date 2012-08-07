@@ -21,7 +21,6 @@ class CreateUsers < ActiveRecord::Migration
         t.integer "message_id"  
       end
     add_index :messages_users, ["user_id", "message_id"]
-    User.new(:first_name => 'Devan', :last_name => 'Flaherty', :username => 'devanflaherty', :password => 'skywalker', :email => 'devanflaherty@me.com', :title => 'Creative Director', :bio => 'Just another creative guy, trying to change the world.', :access_level => 9, :twitter => 'devanflaherty')
-       
+    User.create(:first_name => 'Devan', :last_name => 'Flaherty', :username => 'devanflaherty', :password => 'skywalker', :email => 'devanflaherty@me.com', :title => 'Creative Director', :bio => 'Just another creative guy, trying to change the world.', :access_level => 9, :twitter => 'devanflaherty')
   end
 end

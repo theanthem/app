@@ -19,6 +19,8 @@ class CreateSeries < ActiveRecord::Migration
       current_count = series.messages.length
       series.update_attribute(:messages_count, current_count)
     end
-    
+    Series.create(:title => "First Series", :subtitle => "A study through...", 
+    :book => "Mark", :permalink => "first_series", :description => "This is a series about..."
+    :featured_series => true, :visibility => false)
   end
 end
