@@ -16,9 +16,7 @@ class User < ActiveRecord::Base
                                                   :url => "/images/users/:id/:attachment_:style.:extension",
                                                   :path => ":rails_root/public/images/users/:id/:attachment_:style.:extension",
                                                   :default_url  => "/images/users/default.jpg"
-  validates_attachment_presence :avatar
-  validates_attachment_size :avatar, :less_than => 5.megabytes
-  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+
   
   attr_accessor :password
   
