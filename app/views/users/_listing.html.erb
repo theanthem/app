@@ -1,0 +1,21 @@
+<% @users.each do |user| %>
+	<div class="userProf<%=cycle('', '', ' noMarg')%>">
+		<div class="userLinkTo">
+			<% if user.access_level == 9 %>
+				<% @userTitle = 'Admin'  %>
+			<% elsif user.access_level == 8 %>
+				<% @userTitle = 'Editor'  %>
+			<% elsif user.access_level == 7 %>
+				<% @userTitle = 'Contributor'  %>
+			<% end %>
+			<%= link_to (image_tag user.avatar.url(:medium) , :class => 'left'), :action => 'edit', :id => user %> <br />
+			<%= link_to user.name + " | " + @userTitle, {:action => 'edit', :id => user}, :class => "text" %>
+		</div>
+		<div class="userQuickInfo">
+			<%= mail_to user.email, "Email" %>
+			<%= link_to "Twitter", "http://twitter.com/" + user.twitter, :target => :blank %>
+			
+		</div>
+	</div>
+<% end %>
+

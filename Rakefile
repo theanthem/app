@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Shorebreak::Application.load_tasks
+Anthem::Application.load_tasks

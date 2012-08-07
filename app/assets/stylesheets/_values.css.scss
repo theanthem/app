@@ -1,0 +1,31 @@
+$blue:#658682;
+$red:#fc3d1d;
+$gray:#ddd;
+$black:#444;
+$blacker:#222;
+$white:#F1F1F1;
+$pColor:#606060;
+$siteWidth:1330px;
+$typoBold:'TYPOGRAPHPROExtraBold';
+$typoSemi:'TYPOGRAPHPROSemiBold';
+$typoLight:'TYPOGRAPHPROLight';
+$boldFont:'GothamHTFBold';
+$mediumFont:'GothamHTFMedium';
+$regularFont:'GothamHTFBook';
+$lightFont:'GothamHTFLight';
+$journal: 'JournalRegular';
+
+$minWidth: 840px;
+$sidebarWidth: 252px;
+
+@mixin borderRadius($radius: 3px){
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
+
+@mixin transition($object: all, $time: .1s){
+	transition: $object $time ease-in;
+	-webkit-transition: $object $time ease-in;
+	-moz-transition: $object $time ease-in;
+}

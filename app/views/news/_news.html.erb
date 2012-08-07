@@ -1,0 +1,54 @@
+<% @page_title = 'News' %>
+
+<div id="pageTitle">
+	<div class="controller_navigation">	</div>
+	<h1><%= @page_title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start form-->
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th>Title</th>
+    <th>Event Date</th>
+    <th>Contact Name</th>
+	<th>Expiration Date</th>
+	<th>Featured</th>
+	<th>Date</th>
+  </tr>
+
+<% @newsItems.each do |news| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+	<td><%= news.title %><br/>
+		<div class="actions">
+			<%= link_to 'Preview', {:action => 'show', :id => news}, :target => '_blank' %> | 
+			<%= link_to 'Edit', :action => 'edit', :id => news %> | 
+			<%= link_to 'Delete', :action => 'destroy', :id => news, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	<td width="13%"><%= news.event_date.strftime("%m/%d/%y") %></td>
+	<td width="16%"><%= mail_to news.contact_email, news.contact, :subject => news.title %></td>
+	<td width="16%"><%= news.expire_date.strftime("%m/%d/%y") %></td>
+	<td width="13%"><%= news.featured_news %></td>
+	<td width="10%"><%= news.created_at.strftime("%m/%d/%y") %><br/>
+		<%= news.status %>
+	</td>
+  </tr>
+<% end %>
+<script>
+$(document).ready(function() {
+	$('tr.odd').hover(
+		function() { $('.actions').show(); },
+		function() { $('.actions').hide(); }
+	);
+});
+</script>
+<tr class="head">
+    <th>Title</th>
+    <th>Event Date</th>
+    <th>Contact Name</th>
+	<th>Expiration Date</th>
+	<th>Featured</th>
+	<th>Date</th>
+</tr>
+</table>

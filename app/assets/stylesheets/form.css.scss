@@ -1,0 +1,242 @@
+@import "values";
+
+/*global*/
+.admin.form div#pageContent form {
+  	min-width:$minWidth;
+	table {
+	  margin: 30px 0;
+	  min-width: $minWidth!important;
+		td {
+			vertical-align: top;
+			.formHeadField {
+			  color: #c3c3c3;
+			  font-size: 14px;
+			  font-family: $mediumFont;
+			  border-bottom: 1px solid #ccc;
+			  padding-bottom: 9px;
+			  margin-bottom: 18px;
+			  clear:left;
+			  transition: all .1s ease-in;
+			  -webkit-transition: all .1s ease-in;
+			  -moz-transition: all .1s ease-in;
+			  width: 100%;
+				label {
+				  margin-right: 9px;
+				  font-family: $regularFont;
+				  color: #777;
+				}
+			}
+		}
+		td.mainFormSection {
+		  	width: 100%;
+			section {
+				background: #fff;
+				margin-bottom:18px;
+				div.pad {
+					padding:36px;
+				}
+				input.name {
+					border: none;
+					outline: none;
+					font-size: 28px;
+					font-family: $mediumFont;
+					clear: right;
+					color: $black;
+					transition: all .1s ease-in;
+					-webkit-transition: all .1s ease-in;
+					-moz-transition: all .1s ease-in;
+				}
+				input.inlineInput {
+				  margin-left: 9px;
+				  border: none;
+				  outline: none;
+				  color: $black;
+				  font-size: 14px;
+				  font-family: $mediumFont;
+				  clear: right;
+				  transition: all .1s ease-in;
+				  -webkit-transition: all .1s ease-in;
+				  -moz-transition: all .1s ease-in;
+				}
+				input.inlineInput.smallInput {
+					width:15%!important;
+				}
+				input.name:focus, input.name:hover, input.inlineInput:focus, input.inlineInput:hover, input.changed{
+				  color: $red;
+				}
+				p.hint {
+				  color: #666;
+				}
+				textarea.description {
+				  width: 100%;
+				  border: none;
+				  background: #ddd;
+				  color: #000;
+				  padding: 18px 36px;
+				  margin-left: -36px;
+				  outline: none;
+				  font-size:14px;
+				  line-height: 22px;
+				  text-shadow: 0 1px 1px #fff;
+				}
+				div.textAreaDesc {
+					color: #666;
+					font-size: 14px;
+					font-family: $regularFont;
+					margin-bottom: 9px;
+					clear: left;
+					transition: all .1s ease-in;
+					-webkit-transition: all .1s ease-in;
+					-moz-transition: all .1s ease-in;
+					width: 100%;	
+				}
+				div.textAreaDesc label {
+				  margin-right: 9px;
+				  font-family: $regularFont;
+				  color: #777;
+				}
+			}
+			section#postImages .imageBlock {
+				height: 126px;
+				width: 126px;
+				background: #ddd;
+				display: inline-block;
+				margin-right: 18px ;
+				img {
+					margin-bottom: 3px;
+					width:126px;
+					height:auto;
+				}
+				h2 {
+					font-weight: 100;
+					font-size: 14px;
+					text-transform:capitalize;
+					letter-spacing:0px;
+					margin-bottom:6px;
+					padding-left:12px;
+				}
+				input {
+					margin-left:12px;
+				}
+			}
+		}
+		td.formSidebarControls {
+			padding-left:36px;
+			aside.side.form {
+			  width: 100%;
+			  margin-left: 0px;
+			  vertical-align:top;
+				ul {
+					padding:0px;
+					li {
+						margin: 0 0 18px;
+						clear:both;
+						background:#FFF;
+						padding: 18px 0 18px 18px;
+						h2 {
+							background:#333;
+							padding:18px;
+							margin-top:-18px;
+							margin-left:-18px;
+							color:$white;
+							font-size:14px;
+							font-family:$mediumFont;
+							text-transform:capitalize;
+							font-weight:100;
+							letter-spacing:0px;
+							margin-bottom:18px;
+							text-shadow: 0 1px 1px #000;
+						}
+						ul {
+							margin: 0 0 18px;
+							li {
+								padding:0 18px 0 0;
+								margin: 0 0 18px;
+							}
+							input, select {
+								margin-top:5px;
+								margin-right:4px;
+							}
+							input.text {
+								border: 1px solid #ccc;
+								padding: 8px;
+								outline: none;
+								width: 91%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*user form ///////////////////*/
+.admin.form.user div#pageContent form table {
+	min-width:200px!important;
+}
+.admin.form.user div#pageContent form table td.formSidebarControls aside.side.form ul li {
+	margin: 0 0 18px;
+	clear: both;
+	background: #FFF;
+	padding: 36px;
+	img {
+		width: 240px;
+	}
+	ul li {
+	  padding: 0 0 0 0!important;
+	  margin: 0 0 18px;
+	}
+}
+
+
+
+/* Page /////////////////////////*/
+a.addSection {
+  display: block;
+  font-family: $mediumFont;
+  background: #658682;
+  color: $white;
+  padding: 9px;
+  margin: 18px 0;
+  @include borderRadius;
+}
+
+.sectionContainer {
+	margin-top: 36px;
+}
+.multiInput {
+	padding: 27px 0;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 18px;
+}
+.multiInput input{
+	padding: 9px;
+	border: 1px solid #ddd;
+	font-family: $regularFont;
+	outline: none;
+	width: 20%;
+}
+.sectionSpace {
+	border-bottom:18px solid $white;
+	display: inline-block;
+	width: 100%;
+	padding:18px 36px 36px;
+	margin-left: -36px;
+	margin-bottom: 27px;
+}
+a.remove_nested_fields {
+	background-color: $black;
+	padding:9px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	color: #fff;
+}
+a.remove_nested_fields:hover {
+	background-color: $red;
+	color: #fff;
+}
+label.inputPush {
+	margin-left: 36px;
+}

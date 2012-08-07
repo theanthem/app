@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  teacher_id: MyString
+  scripture: MyString
+  description: MyText
+  tag: MyString
+  air_date: 2012-04-10
+  mp3: MyString
+  vodcast: MyString
+  hd_video: MyString
+  duration: 1
+  viewed: 1
+  teaching_thumb: MyString
+  teaching_display: MyString
+  recommended_teachings: 1
+  featured_teaching: false
+  status: MyString
+
+two:
+  title: MyString
+  teacher_id: MyString
+  scripture: MyString
+  description: MyText
+  tag: MyString
+  air_date: 2012-04-10
+  mp3: MyString
+  vodcast: MyString
+  hd_video: MyString
+  duration: 1
+  viewed: 1
+  teaching_thumb: MyString
+  teaching_display: MyString
+  recommended_teachings: 1
+  featured_teaching: false
+  status: MyString

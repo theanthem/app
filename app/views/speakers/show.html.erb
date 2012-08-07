@@ -1,0 +1,19 @@
+<% @page_title = "Speaker : " + @speaker.name %>
+<% @page_class = 'view speaker'%>
+
+<div id="pageTitle">
+	<h1><%= @page_title %></h1>
+	<div class="controller_navigation">
+		<%= link_to "Back", {:action => 'index', :id => @speaker}, :class => 'back'%>
+	</div>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start show-->
+<% @bio_body = raw simple_format(@speaker.bio) %>
+<%= auto_link(@bio_body, :html => { :target => '_blank' })%>
+<span>@<%= @speaker.twitter  %> : <%= auto_link(Twitter.user_timeline(@speaker.twitter).first.text) %></span>
+
+
+
+

@@ -1,0 +1,29 @@
+<% @page_title = 'Series' %>
+<div id="pageTitle">
+	<div class="controller_navigation">
+		<%= will_paginate @all_series %>
+	</div>
+	<h1><%= @page_title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start form-->
+<table class="list series" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="100%">
+			<div class="seriesContainer">
+    <% @all_series.each do |series| %>
+    	<div class="series_list <%= "hidden" if series.visibility == false %>">
+			<div class="imageBlock">
+				<%= link_to image_tag(series.series_thumb.url(:small), :title => 'View messages from the series ' + series.title), {:controller => "messages", :action => "index", :series_id => series.id}, :class => "series_thumb" %>
+		        <%= link_to( "Edit", { :controller => "series", :action => "edit", :id => series.id }, :class => "series_action_edit") %>
+			</div>
+	      	<h3><%= series.title %></h3>
+			<span><%= series.start_date.strftime("%B %d, %Y") %> - <%= series.end_date.try(:strftime, "%B %d, %Y") if series.end_date != series.created_at %></span>
+	    </div>
+    <% end %>
+	</div>
+		</td>
+		<td style="visibility:hidden"></td>
+	</tr>
+</table>

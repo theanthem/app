@@ -1,0 +1,71 @@
+<% @page_css = 'home' %>
+<% @page_title = 'Home' %>
+<% @page_class = 'home' %>
+
+<div class="banner">
+	<%= image_tag @current_series.series_thumb.url(:large), :class => "thumbnail" %>
+</div>
+<section>
+	<div class="row content showbox">
+		<div class="span4 left">
+			<%= link_to image_tag(@current_message.message_thumb.url(:small), :class => "thumbnail", :alt => @current_message.title + " from the " + @current_message.series.title + " series"), 
+			:action => 'message', :series_id => @current_message.series.permalink, :id => @current_message.permalink %>
+		</div>
+		<div class="span4 middle">
+			<%= link_to image_tag(@current_series.series_thumb.url(:small), :class => "thumbnail", :alt => @current_series.title), 
+			:action => 'series', :series_id => @current_series.permalink %>
+		</div>
+		<div class="span4 middle">
+			<%= link_to image_tag(@featured_series.series_thumb.url(:small), :class => "thumbnail", :alt => @featured_series.title), 
+			:action => 'series', :series_id => @featured_series.permalink %>
+		</div>
+		<div class="span4 right">
+			<%= link_to image_tag(@featured_message.message_thumb.url(:small), :class => "thumbnail", :alt => @featured_message.title + " from the " + @featured_message.series.title + " series"), 
+			:action => 'message', :series_id => @featured_message.series.permalink, :id => @featured_message.permalink %>
+		</div>
+	</div>
+	<div class="row rollbox-container">
+		<div class="span5">
+			<ul class="rollbox">
+				<li><%= link_to "Recent Message", '#' %></li>
+				<li><%= link_to "Current Series", '#' %></li>
+				<li><%= link_to "New Media", '#' %></li>
+				<li><%= link_to "Featured Message", '#' %></li>
+			</ul>
+		</div>
+		<div class="span8">
+			<%= image_tag "pictures/video-filler.jpg", :title => "title", :class => "roll" %>
+		</div>
+		<div class="span5 rollbox-info-slides">
+			<div id="rollbox-info-wrapper">
+				<% @text = "This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elitio sit ..." %>
+				<div class="rollbox-slide-info" data-index="1">
+					<h2>Message Title</h2>
+					<h3>Series</h3>
+					<span class="info">Mark 1:10-15 / Pastor Travis Scott</span>
+					<p><%= truncate(@text,:length => 200, :separator => ' ') %></p>
+					<%= link_to "Launch", '#' %>
+					<%= link_to "Share", '#' %>
+				</div>
+				<div class="rollbox-slide-info" data-index="2">
+					<h2>2 Message Title</h2>
+					<h3>Series</h3>
+					<span class="info">Mark 1:10-15 / Pastor Travis Scott</span>
+					<p></p>
+					<%= link_to "Launch", '#' %>
+					<%= link_to "Share", '#' %>
+				</div>
+			</div>
+		</div>			
+	</div>
+	<div class="row content">
+		<div class="span8 left">
+			<h2>Amplify Jesus</h2>
+			<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia </p>
+		</div>
+		<div class="span8 right">
+			<h2>Make Disciples</h2>
+			<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia </p>
+		</div>
+	</div>			
+</section>	

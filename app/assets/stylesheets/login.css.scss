@@ -1,0 +1,124 @@
+@import "values";
+input#username:-webkit-autofill {
+	background:#fff!important;
+}
+.admin.login {
+	.wrapper {
+	min-height:100%;
+	height: auto!important;
+	height: 100%;
+	background:none;
+	margin: 0 auto -54px!important;
+	}
+}
+.login .push, .login .footer {
+	height: 54px;
+}
+.login #wood, .login header, .login #user_info   {
+	min-width: 300px!important;
+}
+div.login {
+	max-width: 300px;
+	width: 70%;
+	padding: 36px 36px;
+	margin: 72px auto 18px;
+	background: #222;
+	@include borderRadius(6px);
+	-moz-box-shadow: inset 0 0 16px #000000;
+	-webkit-box-shadow: inset 0 0 16px #000000;
+	box-shadow: inset 0 0 16px #000000;
+	border: 2px solid #FFF;
+	div {
+		width: 90%;
+		margin: 0 auto;
+		position: relative;
+		left: -9px;
+		h1 {
+			color: $white;
+			border: none;
+			font-weight: 100;
+			font-family: $boldFont;
+			text-shadow: 0 1px 1px #000;
+
+		}
+		input {
+			border: none;
+			padding: 9px;
+			margin: 9px 0;
+			background: rgba(0,0,0, 0.3);
+			width: 100%;
+			@include borderRadius;
+			border: 1px solid transparent;
+		}
+		input#username {
+			margin-top: 18px;
+			font-size: 16px;
+			color: $white;
+			text-shadow: 0 1px 1px #000;
+			font-family: $lightFont;
+			-moz-box-shadow: inset 0 0 4px #000000, 0 1px 1px #444;
+			-webkit-box-shadow: inset 0 0 4px #000000, 0 1px 1px #444;
+			box-shadow: inset 0 0 4px #000000, 0 1px 1px #444 ;
+			border: 1px solid transparent;
+		}
+		input#username:focus {
+			background: rgba(0,0,0, 0.5);
+			color: $red
+		}
+		input#password {
+			font-size: 16px;
+			color: $white;
+			text-shadow: 0 1px 1px #000;
+			font-family: $lightFont;
+			-moz-box-shadow: inset 0 0 4px #000000, 0 1px 1px #444;
+			-webkit-box-shadow: inset 0 0 4px #000000, 0 1px 1px #444;
+			box-shadow: inset 0 0 4px #000000, 0 1px 1px #444 ;
+			border: 1px solid transparent;
+		}
+		input#password:focus, input#username:focus {
+			outline:none;
+			background: rgba(0,0,0, 0.5);
+			border: 1px solid $red;
+			color: $red;
+			-moz-box-shadow: 0 0 0 #c09797;
+			-webkit-box-shadow: 0 0 0 #c09797;
+			box-shadow: 0 0 0 #c09797;
+		}
+		input#password:hover, input#username:hover{
+			outline:none;
+			background: rgba(0,0,0, 0.5);
+			color: $red;
+		}
+		input.submit {
+			background: $white;
+			width: 80px;
+			font-size: 16px;
+			clear: both;
+			float: left;
+			-moz-box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($white, 5%);
+			-webkit-box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($white, 5%);
+			box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($white, 5%);
+			text-shadow: 0 1px 1px lighten($white, 20%);
+			color: #111;
+			cursor:pointer;
+		}
+		input.submit:hover {
+			background: $red;
+			text-shadow: 0 1px 1px lighten($red, 20%);
+			-moz-box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($red, 10%);
+			-webkit-box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($red, 10%);
+			box-shadow: 0 1px 4px #000000, inset 0 -12px 8px lighten($red, 10%);
+		}
+	}
+}
+body.login .notice {
+	color:#444;
+	font-family:$journal;
+	font-size:44px;
+	text-align:center;
+	width:336px;
+	letter-spacing:1px;
+	text-shadow: 0 1px 1px #fff;
+	line-height:18px;
+	margin:0 auto;
+}

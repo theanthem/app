@@ -1,6 +1,10 @@
-Shorebreak::Application.routes.draw do
-    
-  root :to => 'home#index'
+Anthem::Application.routes.draw do
+
+  root :to => 'public#index'
+  
+  match 'admin', :to  => 'access#dashboard'
+  match 'page/:id', :to => 'public#page'
+  match 'archive', :to => 'public#archive'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,4 +61,12 @@ Shorebreak::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   match ':controller(/:action(/:id))(.:format)'
+  
+  match ':series_id', :to => 'public#series'
+  match ':series_id/:id', :to => 'public#message'
+      
+  match 'posts/:id/remove_tag/:tag' => 'posts#remove_tag'
+  match 'messages/:id/remove_tag/:tag' => 'messages#remove_tag'
+  match 'media/:id/remove_tag/:tag' => 'media#remove_tag'
+  
 end

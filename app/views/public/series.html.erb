@@ -1,0 +1,41 @@
+<% @page_title = @series.title %>
+<% @page_class = 'series' %>
+
+<section>
+	<div class="row series_head">
+		<div class="span8 series_display"> 
+			<%= image_tag(@series.series_thumb.url(:medium), :title => @series.title) %>
+			<div class="social_bar">
+				<div class="connectBar">
+					<i class="connect_icon">&nbsp;</i>
+					<%= link_to "Tweet", "#" %>
+					<%= link_to "Facebook", "#" %>
+					<%= link_to "Follow This Series", "#" %>
+				</div>
+				<div class="message_count">
+					<div class="message_number"><%= @series.messages.length %> </div>
+					<span>Messages
+				</div>	
+			</div>
+		</div>
+		<div class="span8 series_description">
+			<h2><%= @series.title %></h2>
+			<span class="series_info"><%= @series.subtitle + " : " + @series.book %></span>
+			<% @description = raw simple_format(truncate(@series.description, :length => 530, :separator => " ")) %>
+			<%= auto_link(@description, :html => { :target => '_blank' })%>
+		</div>
+	</div>
+	<div class="row series_list">
+		<h2>Messages</h2>
+		<% @series.messages.published.each do |message| %>
+			<div class="span4 <%= cycle("left", "middle", "middle", "right") %>">
+				<%= link_to image_tag(message.teaching_thumb.url(:small), :title => message.title, :class => "series_thumb"), :action => 'message', :series_id => message.series.permalink, :id => message.permalink %>	
+			</div>	
+		<% end %>	
+	</div>
+	<div class="breadcrumbs">
+		<%= link_to "Media", :action => "media" %> /
+		<%= link_to "Series", :action => "archive" %> /
+		<span><%= @series.title %></span>
+	</div>
+</section>

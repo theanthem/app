@@ -1,0 +1,35 @@
+<% @page_class = 'manage form user'%>
+
+<div id="pageTitle">
+	<h1><%= @page_title %></h1>
+	<div class="controller_navigation">
+	</div>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<div class="userlist left">
+	<%= render(:partial => 'listing') %>
+</div>
+<div class="userlist right">
+	<% if params[:id].blank? -%>
+		<% @page_title = 'New User' %>
+		<%= form_for :user, :url => {:action => 'manage'}, :html => { :multipart => true } do |f| %>
+		  <%= render :partial => 'form', :locals => {:f => f}  %>
+		  <%= submit_tag("Create") %>
+		<% end %>
+	<% else %>
+		<%= image_tag @user.avatar.url(:small) %>
+		<% @page_title = 'Edit User : ' + @user.name  %>
+		<%= form_for :user, :url => {:action => 'manage', :id => @user}, :html => { :multipart => true } do |f| %>
+		  <%= render :partial => 'form', :locals => {:f => f}  %>
+		  <%= submit_tag("Update") %>
+		<% end %>
+
+		<%= link_to('Delete User', { :action => 'delete', :id => @user }, :confirm => 'Are you sure you want to permanently delete this user?', :method => :post) %>
+
+	<% end %>
+	<br />
+	<%= link_to('Cancel', :action => 'index') %>
+</div>
+
+

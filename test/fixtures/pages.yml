@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  permalink: MyString
+  page_type: MyString
+  thumbnail: MyString
+  display_image: MyString
+  background_image: MyString
+  position: 1
+  status: MyString
+
+two:
+  name: MyString
+  permalink: MyString
+  page_type: MyString
+  thumbnail: MyString
+  display_image: MyString
+  background_image: MyString
+  position: 1
+  status: MyString

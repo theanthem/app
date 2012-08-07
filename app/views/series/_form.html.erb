@@ -1,0 +1,94 @@
+<%= error_messages_for (@series)  %>
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="mainFormSection" width="100%">
+			<section id="series">
+				<div class="pad<%= " edit" if @series %>">
+					<% if @series.messages.size > 0 %>
+							<%= link_to "View Messages", {:controller => 'messages', :action => "index", :series_id => @series.id}, :class => 'preview' %>
+					 <% end %>
+				    <div class="formHeadField">
+						<%= f.text_field :title, :placeholder => "Series Title", :class => "name" %>
+					</div>
+				    <div class="formHeadField">
+						<%= f.label :subtitle %> |<%= f.text_field :subtitle, :placeholder => "Series Subtitle", :class => "inlineInput" %>
+					</div>
+					<div class="formHeadField">
+						<%= f.label :book %> |<%= f.text_field :book, :placeholder => "Series Book", :class => "inlineInput" %>
+					</div>
+					<div class="textAreaDesc">
+						<%= f.label :description %>
+					</div>
+					<%= f.text_area :description, :placeholder => "Series description", :class => "description", :rows => '10' %>
+				</div>
+			</section>
+			
+			<% if @series.series_thumb? || @series.series_display? %>
+			<section id="postImages">
+				<div class="pad">
+				<% if @series.series_thumb? %>
+					<div class="imageBlock">
+						<%= image_tag @series.series_thumb.url(:thumbnail), :title => "Thumbnail", :class => "Thumbnail" %>	
+						<h2>Thumbnail</h2>
+							<%= f.check_box :remove_thumb, :label => 'Delete Image' %> Remove
+					</div>
+				<% end %>
+				<% if @series.series_display? %>
+					<div class="imageBlock">
+						<%= image_tag @series.series_display.url(:thumbnail), :title => "Display Image", :class => "Display" %>	
+						<h2>Display</h2>
+						<%= f.check_box :remove_display, :label => 'Delete Image' %> Remove
+					</div>
+				<% end %>
+				</div>
+			</section>
+			<% end %>
+			
+			<%= link_to('Cancel', {:action => 'index'}, :confirm => 'Are you sure you want to leave this message. Any progress you made may be lost.') %>
+		</td>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
+		
+		<td class="formSidebarControls">
+			<aside class="side form right">
+				<ul>
+					<li><h2>Publish</h2>
+						<ul>
+							<li>
+								<%= f.label :visibility, "Visible?" %>: <%= @series.visibility == 'false' ? "Visible" : "Hidden" %><br/>
+								<%= f.check_box :visibility %> 
+							</li>
+							<li><%= f.label :start_date, 'Series Began' %> on: <%= @series.start_date %>
+								<% if @series.id? %>	
+									<%= f.text_field :start_date, :value => @series.start_date, :class => "date text" %>					
+								<% else %>
+									<%= f.text_field :start_date, :value => Date.today.strftime, :class => "date text" %>				
+								<% end %>
+							</li>
+							<li><%= f.label :end_date, 'Series Ended' %> on: <%= @series.end_date %>
+								<%= f.text_field :end_date, :class => "date text" %>
+							</li>
+							<li><%= link_to( "delete", {:action => "destroy", :id => @series},:confirm => 'Are you sure you want to permanently delete this series and all messages related?', :class => "delete") if @series.id %><%= submit_tag(params[:id].blank? ? "Publish" : "Update") %></li>
+						</ul>
+					</li>
+					<li><h2><%= f.label :featured_series %></h2>
+						<ul>
+							<li><%= f.check_box :featured_series %>Check if this is a featured Series</li>
+						</ul>
+					</li>
+					<li><h2>Series Images</h2>
+						<ul>
+							<li><%= f.label :series_thumb, "Thumbnail" %><%= f.file_field :series_thumb %></li>						
+							<li><%= f.label :series_display, "Display Image" %><%= f.file_field :series_display %></li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
+		</td>
+	</tr>
+</table>
+<script>
+	$("div.edit input").change(function() {
+		$(this).addClass("changed");
+	});
+</script>

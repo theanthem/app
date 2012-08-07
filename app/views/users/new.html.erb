@@ -1,0 +1,25 @@
+<% @page_class = 'manage form user'%>
+
+<div id="pageTitle">
+	<h1><%= @page_title %></h1>
+	<div class="controller_navigation">
+	</div>
+</div>
+<div class="userlist right">
+	<div class="userHead">
+		<div class="userInfo">
+			<h2>New User</h2>
+		</div>
+	</div>
+	<div class="userForm">
+			<% @page_title = 'New User' %>
+			<%= form_for :user, :url => {:action => 'create'}, :html => { :multipart => true } do |f| %>
+			<%= render :partial => 'form', :locals => {:f => f}  %>
+		<% end %>
+	</div>
+	<div class="userActivity">
+		<h3>Some info about adding users.</h3>
+	</div>
+	<br />
+	<%= link_to('Cancel', :action => 'index') %>
+</div>

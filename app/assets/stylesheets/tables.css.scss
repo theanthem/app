@@ -1,0 +1,44 @@
+/* @override http://localhost:3000/assets/table.lists.css?body=1 */
+
+ table.list {
+	background: #FFF;
+	width: 100%;
+	border:1px solid #DDD;
+}
+	table.list th {
+		padding: 18px;
+		font-weight: 100;
+		text-align: left;
+		text-shadow: none;
+	}
+	table.list th.action {
+		border-right: none;
+	}
+	 table.list tr {
+		text-shadow: 0px 1px 1px #FFF;
+	}
+	 table.list tr.head {
+		background: #444;
+		color: #F1F1F1;
+	}
+	 table.list tr.even {
+		background: #ECEDEA;
+	}
+		 table.list tr.even td {
+
+		}
+		 table.list tr.odd td {
+
+		}
+	 table.list td {
+		padding: 12px 18px;
+		img {
+			margin-right:18px;
+		}
+	}
+	 table.list td:last-child {
+		border: none;
+	}
+	 table.list td.centerText {
+		text-align: center;
+	}

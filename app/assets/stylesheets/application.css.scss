@@ -1,0 +1,306 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+*/
+@import "values";
+@import "variables";
+@import "grid";
+
+* {
+  	margin: 0;
+  	padding: 0;
+}
+html, body {
+  	height: 100%;
+}
+body {
+  	font-size: 12px;
+  	font-family: $regularFont, "Helvetica Neue", sans-serif, Arial;
+  	color: $black;
+	background: $white;
+}
+::selection {
+	background: $red;
+}
+::-moz-selection {
+	background: $red;
+}
+ul {
+  	list-style: none;
+}
+ol {
+  	list-style: none;
+}
+a {
+  	text-decoration:none;
+}
+a:link, a:visited {
+  	outline: none;
+  	border: none;
+  	color: $black;
+}
+a:hover {
+  	color: $red;
+}
+a img {
+  	outline: none;
+  	border: none;
+}
+img.center {
+  	margin: 0px auto;
+}
+.floatLeft {
+  	float: left!important;
+}
+.floatRight {
+  	float: right!important;
+}
+.clear {
+  	clear: both;
+  	height: 0px;
+}
+.breaker {
+  	clear: both;
+  	height: 0px;
+	border-top: 1px dashed #d2d2d2;
+  	border-bottom: 1px dashed #FFF;
+}
+.wrapper {
+	min-height:100%;
+	height: auto!important;
+	height: 100%;
+	margin: 0 auto -200px;
+}
+.push {
+	height: 200px;
+}
+header, footer, section, aside, article, nav {
+	display: block;
+}
+
+/* typography  /////////////////////////////*/
+h2 {
+	text-decoration: 0 1px 1px white;
+	text-transform:uppercase;
+	color:$black;
+	font-weight:100;
+	font-family:$boldFont;
+	font-size:50px;
+	letter-spacing:-4px;
+}
+h3 {
+	text-decoration: 0 1px 1px white;
+}
+h4 {
+	text-decoration: 0 1px 1px white;
+}
+.red {
+	color: $red;
+}
+p {
+	color:$pColor;
+	font-size:13px;
+	line-height:22px;
+}
+
+/* header  /////////////////////////////*/
+header {
+	width: 100%;
+	min-width:$minWidth + 324px;
+	display:inline-block;
+	background-color: $blacker;
+	border-bottom: 1px solid #333;
+	box-shadow:0 1px 0 #000;
+	-webkit-box-shadow:0 1px 0 #000;
+	-moz-box-shadow:0 1px 0 #000;
+	h1.logo {
+		margin-top:9px;
+	}
+	#headerContent {
+		width: 100%;
+		display: table;
+		position:absolute;
+		margin: 0 auto 0;
+	}
+	#wood {
+		height: 18px;
+		width:100%;
+		min-width: $section;
+		margin-bottom: 0;
+	}
+	span.amplify {
+		float:right;
+		font-size:16px;
+		color:#D1D1D1;
+		text-shadow:0 1px 0 #FFF;
+	}
+	span.location {
+		font-size:16px;
+		color:#9b9b9b;
+		text-shadow:0 1px 1px #FFF;
+	}
+	.row div {
+		margin-top:18px!important;
+		margin-bottom:18px!important;
+	}
+	span.headerChurch a {
+		font-size:18px!important;
+		font-family:$typoBold!important;
+		float:left;
+		color:$black!important;
+		padding-left:$gutter;
+		text-shadow: 0 1px 1px #000;
+		transition:all 0.3s ease-in;
+		-webkit-transition:all 0.3s ease-in;
+		-moz-transition:all 0.3s ease-in;
+	}
+	span.headerChurch a:hover {
+		color:$white!important;
+	}
+}
+
+/* nav  /////////////////////////////*/
+nav {
+    float: right;
+    font-size: 16px;
+    height: 20px;
+	width: 100%;
+	margin-top:18px;
+	ul {
+		display:inline-block;
+		li {
+			float:left;
+			line-height: 25px;
+			margin-right: 24px;
+			color:$blacker;
+			font-family:$mediumFont;
+			text-shadow:0 1px 1px #fff;
+			a {
+				text-shadow: 0 1px 1px white;
+				transition: all .2s ease-in;
+				-webkit-transition: all .2s ease-in;
+				-moz-transition: all .2s ease-in;
+				font-family:$regularFont;
+				color:#aaa!important;
+			}
+			a:hover {
+				color:$blacker!important;
+			}
+		}
+		li.dotted {
+			float: left;
+			height:20px;
+			border-left: 1px dashed $black;
+			margin-right:12px;
+		}
+	}
+	form.search {
+		float: right;
+		width: auto!important;
+		margin-top:-3px;
+		min-width: 0px!important;
+		text-shadow: 0 1px 1px #fff;
+		input#search {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 9px;
+			width: 40px;
+			background: none;
+			-webkit-transition:all .3s ease-out;
+			-moz-box-shadow: 0 1px 0 #ffffff;
+			-webkit-box-shadow: 0 1px 0 #ffffff;
+			box-shadow: 0 1px 0 #ffffff;
+		}
+		input#search:focus {
+			width: 155px;
+			outline: none;
+			background: white;
+		}
+	}
+}
+
+/* footer /////////////////////////////*/
+footer {
+	width: 100%;
+    min-width: 1116px;
+    height: 200px;
+    background: $blacker;
+    border-top: 1px solid #000;
+    position: relative;
+    z-index: 35;
+	#footerContent {
+		width: 1116px;
+		margin: 60px auto 0;
+		color:$black;
+		span {
+			color:$black!important;
+			font-weight:100!important;
+			font-family:$typoBold;
+			text-transform:uppercase;
+			font-size:18px;
+			line-height:14px;
+			text-shadow: 0 1px 1px #000;
+		}
+		span.footer_line {
+			background:$black;
+			display:block;
+			height:2px;
+			margin:14px 0;
+		}
+	}
+	nav {
+		float: right;
+		font-size: 16px;
+		height: 20px;
+		width: 100%;
+		margin-top: 0;
+		margin-top: 18px;
+		a {
+		  text-shadow: 0 1px 1px white;
+		  margin-right: 24px;
+		  text-shadow: 0 1px 1px #000;
+		  line-height: 1px;
+		  float: left;
+		  transition: all .1s ease-in;
+		  -webkit-transition: all .1s ease-in;
+		  -moz-transition: all .1s ease-in;
+		}
+	}
+	form.search {
+		  float: right;
+		  width: auto!important;
+		  color: #333;
+		  margin-top: -16px;
+		  min-width: 0px!important;
+		  text-shadow: 0 1px 1px #000;
+		input#search {
+		  border: 1px solid #000;
+		  border-radius: 4px;
+		  padding: 9px;
+		  width: 40px;
+		  color: #f4f4f4;
+		  background: none;
+		  -webkit-transition: all .3s ease-out;
+		  -moz-box-shadow: 0 1px 1px #393939;
+		  -webkit-box-shadow: 0 1px 1px #393939;
+		  box-shadow: 0 1px 1px #393939;
+		}
+		input#search:focus {
+		  width: 155px;
+		  outline: none;
+		  background-color: #131313;
+		}
+	}
+	.twitter_home {
+		width:500px;
+		text-align:right;
+		color:$black;	
+	}
+}

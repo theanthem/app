@@ -1,0 +1,58 @@
+<% @page_title = 'Posts' %>
+<% @page_class = 'list post'%>
+
+<div id="pageTitle">
+	<div class="controller_navigation">	</div>
+	<h1><%= @page_title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start form-->
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th>Title</th>
+    <th>Author</th>
+    <th>Categories</th>
+	<th>Tags</th>
+	<th>Comments</th>
+	<th>Featured</th>
+	<th>Date</th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+	<td><%= post.title %><br/>
+		<div class="actions">
+			<%= link_to 'Preview', {:action => 'show', :id => post}, :target => '_blank' %> | 
+			<%= link_to 'Edit', :action => 'edit', :id => post %> | 
+			<%= link_to 'Delete', :action => 'destroy', :id => post, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	<td width="12%"><%= post.author.username if post.author %></td>
+	<td width="12%"><%= post.categories.collect {|cat| cat.name }.join(", ") %></td>
+	<td width="12%"><%= post.tags.collect {|tag| tag.name }.join(", ") %></td>
+	<td width="8%" class="centerText"><%= post.comments_count %></td>
+	<td width="12%"><%= post.featured_post %></td>
+	<td width="10%"><%= post.created_at.strftime("%m/%d/%y") %><br/>
+		<%= post.status %>
+	</td>
+  </tr>
+<% end %>
+<script>
+$(document).ready(function() {
+	$('tr.odd').hover(
+		function() { $('.actions').show(); },
+		function() { $('.actions').hide(); }
+	);
+});
+</script>
+<tr class="head">
+  	<th>Title</th>
+  	<th>Author</th>
+  	<th>Categories</th>
+	<th>Tags</th>
+	<th>Comments</th>
+	<th>Featured</th>
+	<th>Date</th>
+</tr>
+</table>

@@ -1,0 +1,30 @@
+<% @page_title = 'Series Archive' %>
+<% @page_class = 'archive' %>
+
+<section>
+	<div class="row archive archive_featured">
+		<div class="span8 left">
+			<%= link_to image_tag(@current.series_thumb.url(:medium), :title => @current.title, :class => "current"), :action => 'series', :series_id => @current.permalink %>
+			<h3><%= @current.title %></h3>
+			<span><%= @current.start_date.strftime("%B %d, %Y") %> - <%= @current.end_date.try(:strftime, "%B %d, %Y") if @current.end_date != @current.created_at %></span>
+		</div>
+		<div class="span8 right">
+			<%= link_to image_tag(@featured.series_thumb.url(:medium), :title => @featured.title, :class => "featured"), :action => 'series', :series_id => @featured.permalink %>
+			<h3><%= @featured.title %></h3>
+			<span><%= @featured.start_date.strftime("%B %d, %Y") %> - <%= @featured.end_date.try(:strftime, "%B %d, %Y") if @featured.end_date != @featured.created_at %></span>
+		</div>
+	</div>
+	<div class="row archive archive_list">
+		<% @all_series.each do |series| %>
+			<div class="span4 <%= cycle("left", "middle", "middle", "right") %>">
+				<%= link_to image_tag(series.series_thumb.url(:small), :title => series.title, :class => "archive_thumb"), :action => 'series', :series_id => series.permalink %>
+				<h3><%= series.title %></h3>
+				<span><%= series.start_date.strftime("%B %d, %Y") %> - <%= series.end_date.try(:strftime, "%B %d, %Y") if series.end_date != series.created_at %></span>
+			</div>
+		<% end %>
+	</div>
+	<div class="breadcrumbs">
+		<%= link_to "Media", :action => "media" %> /
+		<span>Series</span>
+	</div>
+</section>

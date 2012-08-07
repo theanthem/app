@@ -1,3 +1,93 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "values";
+.public.home {
+	.banner {
+		/*min-width: $section;*/
+		width:1116px;
+		max-height: 306px;
+		display: block;
+		margin:9px auto 0;
+		overflow:hidden;
+		img {
+			width:100%;
+			min-width: $section;
+		}
+	}
+	/* rollbox ///////////////////////////////////////*/
+	.rollbox-container {
+		padding: 0;
+		margin-bottom:-12px;
+		ul.rollbox {
+			border-right:1px solid #000;
+			li {
+		
+				a {
+					color:#f4f4f4!important;
+					background: image-url("design/footer-bg.jpg");
+					height:70px;
+					padding-left:36px;
+					line-height:72px;
+					display:block;
+					border-bottom:1px solid #000;
+					border-top:1px solid #3a3a3a;
+				}
+				a:hover {
+					background: image-url("design/sidebar_nav.jpg");			
+				}
+			}
+		}
+		.roll {
+			border-right:1px solid #000;
+		}
+		.rollbox-info-slides {
+			height:288px;
+			overflow:hidden;
+			#rollbox-info-wrapper {
+				width:800px;
+				.rollbox-slide-info {
+					background: image-url("design/footer-bg.jpg");
+					padding:36px;
+					width:288px - 72px;
+					height:216px;
+					float:left;
+					h2 {
+						color:$white;
+						font-size:16px;
+						text-transform: Capitalize;
+						letter-spacing:1px;
+						font-weight:100;
+					}
+					h3 {
+						color: #ccc;
+						font-family: 'GothamHTFBook';
+						font-weight:100;
+						font-size: 12px;
+						margin-top: 2px;
+					}
+					span.info {
+						color: #ccc;
+						display: block;
+						margin: 4px 0;
+					}
+					p {
+						line-height: 22px;
+						color: #aaa;
+						margin-top: 12px;
+					}
+
+					a {
+						color: $white;
+						font-family: 'GothamHTFMedium';
+						margin-right: 10px;
+						position: relative;
+						top: 12px;
+					}
+					a:hover {
+						color: $orange;
+					}
+				
+				}	
+			}
+		}
+	}
+}

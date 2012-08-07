@@ -1,0 +1,53 @@
+<aside class="mainSidebar">
+	<h1>ANTHEM<span class="red">:HQ</span></h1>
+	<% if params[:series_id].present? %>
+		<%= link_to "+", {:action => 'new', :series_id => @series.id}, :class => 'new' %>
+	<% else %>
+		<%= link_to "+", {:action => 'new'}, :class => 'new', :title => "New Item" %>
+	<% end %>
+	<ul>
+		<li class="head">Media</li>
+		<li>
+			<%= link_to "Messages", {:controller => "series"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "messages", :action => "new", :series_id => Series.first(:order => 'id DESC').id}, :class => "addNew" %>
+		</li>
+		<li>
+			<%= link_to "Speakers", {:controller => "speakers"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "speakers", :action => "new"}, :class => "addNew" %>
+		</li>
+		<li>
+			<%= link_to "Media Posts", {:controller => "media"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "media", :action => "new"}, :class => "addNew" %>
+		</li>
+	</ul>
+	<ul>
+		<li class="head">Pages</li>
+		<!--li>
+			<%= link_to "Home", {:controller => "home"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "home", :action => "new"}, :class => "addNew" %>
+		</li-->
+		<li>
+			<%= link_to "Pages", {:controller => "pages"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "pages", :action => "new"}, :class => "addNew" %>
+		</li>
+		<li>
+			<%= link_to "News", {:controller => "news"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "news", :action => "new"}, :class => "addNew" %>		
+		</li>
+	</ul>
+	<ul>
+		<li class="head">Blog</li>
+		<li>
+			<%= link_to "Posts", {:controller => "posts"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "posts", :action => "new"}, :class => "addNew" %>
+		</li>
+		<li>
+			<%= link_to "Categories", {:controller => "categories"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "categories", :action => "new"}, :class => "addNew" %>
+		</li>
+		<li>
+			<%= link_to "Comments", {:controller => "comments"}, :class => "goTo" %>
+			<%= link_to " + ", {:controller => "comments", :action => "new"}, :class => "addNew" %>
+		</li>
+	</ul>
+</aside>

@@ -1,0 +1,17 @@
+$section: 1116px;
+$sectionMaxWidth: 1116px;
+$sectionMinWidth: 480px;
+$grid: 16;
+$row: 100%;
+$column: 36px;
+$gutter: 36px;
+
+$span1: $column;
+$span2: $column * 2 + $gutter;
+$span4: ($column * 4) + ($gutter * 3);
+$span5: ($column * 5) + ($gutter * 3);
+$span6: ($column * 6) + ($gutter * 5);
+$span8: ($column * 8) + ($gutter * 7);
+$span10: ($column * 10) + ($gutter * 9);
+$span12: ($column * 12) + ($gutter * 11);
+$span16: ($column * 16) + ($gutter * 15);

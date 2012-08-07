@@ -1,0 +1,127 @@
+<% @page_css = 'message' %>
+<% @page_title = @message.title %>
+<% @page_class = 'messages' %>
+<!--impressions / move into controller or model-->
+<% @count = @message.impressionist_count(:filter=>:ip_address) %>
+<% @viewed = [] %>
+<% @series.messages.each do |count| %>
+	<% @viewed << count.impressionist_count(:filter=>:ip_address) %>
+<% end %>
+<% @total = @viewed.inject(:+) %>
+<% @popularity = @count * 100 / @total %>
+<section>
+	<div class="row message">
+		<div class="span12 left">
+			<div class="media_player">
+				<% if @message.vimeo? %>
+					<iframe src="http://player.vimeo.com/video/<%= @message.vimeo %>?title=0&amp;portrait=0" width="828" height="465" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				<% else %>
+					<%= image_tag @message.message_thumb.url(:large), :title => "title", :class => "message_media" %>
+				<% end %>
+				<div class="social_bar">
+					<div class="connectBar">
+						<i class="connect_icon">&nbsp;</i>
+						<%= link_to "Tweet", "#" %>
+						<%= link_to "Facebook", "#" %>
+						<%= link_to "Follow This Series", "#" %>
+					</div>
+					<div class="settings">
+						<i class="settings_icon">&nbsp;</i>
+					</div>
+					<div class="viewed">
+						<i class="viewed_icon">&nbsp;</i>
+						<%= @message.impressionist_count(:filter=>:ip_address) %>
+					</div>
+					<div class="popularity">
+						<ul>
+							<li class="<% if @popularity >= 80 %>green<% end %>">&nbsp;</li>
+							<li class="<% if @popularity >= 64 %>green<% end %>">&nbsp;</li>
+							<li class="<% if @popularity >= 48 %>yellow<% end %>">&nbsp;</li>
+							<li class="<% if @popularity >= 32%>yellow<% end %>">&nbsp;</li>
+							<li class="<% if @popularity >= 16 %>red<% end %>">&nbsp;</li>
+							<li class="<% if @popularity %>red<% end %>">&nbsp;</li>
+						</ul>
+						Popularity
+					</div>
+					<div class="liked">
+						<div class="count">38</div>
+						<div class="heart">
+							<%= link_to " ", '#' %>
+						</div>
+					</div>	
+				</div><!--close socialbar-->
+			</div><!--close mediaplayer-->
+			<div class="row message_info">
+				<div class="span8">
+					<div class="main">
+						<span class="series"><%= @series.title %></span>
+						<h2><%= @message.title %></h2>
+						<span class="scripture"><%= @message.scripture %></span>
+						<div class="description">
+							<span class="message_details">
+								<%= link_to @message.speaker.name, "#" %> / 
+								<%= @message.air_date %> / 
+								<%= @message.duration %>
+							</span>	
+							<% @description = raw simple_format(truncate(@message.description, :length => 600, :separator => " ")) %>
+							<%= auto_link(@description, :html => { :target => '_blank' })%>
+						</div>
+						<div class="tags">
+							<h3>Tagged as:</h3>
+							<div class="tag_list">
+								<% @message.tag_list.each do |tag| -%>
+								<%= link_to tag, "#" %>
+								<% end %>
+							</div>
+						</div>
+					</div><!--close Main-->		
+				</div><!--Close Message info Main-->
+				<div class="span4 side">
+					<%= image_tag @message.message_thumb.url(:small), :title => @message.title %>
+					<div class="links">
+						<ul>
+							<li><h3>Download</h3></li>
+							<li>Video</li>
+							<li>SD Video</li>
+							<li>Audio</li>
+						</ul>
+						<ul>
+							<li><h3>iTunes</h3></li>
+							<li>Vodcast</li>
+							<li>Podcast</li>
+						</ul>
+						<% if @message.vimeo? %>
+							<h3>Embed</h3>
+							<input value="<iframe src='http://player.vimeo.com/video/<%= @message.vimeo %>title=0&amp;portrait=0' width='560' height='315' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>" />
+						<% end %>
+					</div><!--close links-->
+				</div>		
+			</div><!--Close Message Info Sidebar-->
+		</div><!--Close Message Info-->	
+		<div class="span4 message_sidebar right">
+			<%= image_tag @series.series_thumb.url(:small), :title => @series.title %>
+			<div class="wood_break top">&nbsp;</div>
+			<ul><% @series.messages.each do |m| %>
+				<li><%= link_to_unless_current m.title, :id => m.permalink %></li>
+				<% end %>
+			</ul>
+			<div class="wood_break bottom">&nbsp;</div>
+			<%= link_to "View All Messages", {:action => "series"}, :class => "view_all" %>
+			
+			<% if @related.length >= 1 %><h2>Related Messages</h2><% end %>
+			<% @related.each do |related| %>
+				<div class="thumb">
+				<%= link_to image_tag(related.message_thumb.url(:small)),:series_id => related.series.permalink, :id => related.permalink  %>
+					<%= link_to raw("<h3>#{related.title}</h3>
+								<h4>Series: #{related.series.title}</h4>"),{:series_id => related.series.permalink, :id => related.permalink}, :class => 'thumbInfo'  %>
+				</div>
+			<% end %>
+		</div><!--Close Message_sidebar-->
+	</div><!--Close Row-->
+	<div class="breadcrumbs">
+		<%= link_to "Media", :action => "media" %> /
+		<%= link_to "Series", :action => "archive" %> /
+		<%= link_to @series.title, :action => "series" %> /
+		<span><%= @message.title %></span>
+	</div>
+</section>

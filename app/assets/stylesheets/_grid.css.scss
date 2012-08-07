@@ -1,0 +1,53 @@
+.public section {
+	width: 1116px;
+	min-width:480px;
+	margin:0 auto;
+	.row {
+		width:100%;
+		clear:both;
+		height:auto;
+		display:inline-block;
+		div {
+			float:left;
+		}
+		.left {
+			margin: 0 18px 0 0;
+		}
+		.middle {
+			margin:0 18px;
+		}
+		.right {
+			margin: 0 0 0 18px;
+		}
+		.span1 {
+			width:$span1;
+		}
+		.span2 {
+			width:$span2;
+		}
+		.span4 {
+			width:$span4;
+		}
+		.span5 {
+			width:$span5;
+		}
+		.span6 {
+			width:$span6;
+		}
+		.span8 {
+			width:$span8;
+		}
+		.span10 {
+			width:$span10;
+		}
+		.span12 {
+			width:$span12;
+		}
+		.span16 {
+			width:$span16;
+		}
+		.offset4 {
+			margin-left:$span4 + $gutter + 18px;
+		}
+	}
+}

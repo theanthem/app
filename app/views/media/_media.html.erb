@@ -1,0 +1,54 @@
+<% @page_title = 'Media' %>
+
+<div id="pageTitle">
+	<div class="controller_navigation">	</div>
+	<h1><%= @page_title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start form-->
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th>Title</th>
+    <th>Author</th>
+    <th>Media Type</th>
+	<th>Tags</th>
+	<th>Featured</th>
+	<th>Date</th>
+  </tr>
+
+<% @medias.each do |media| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+	<td><%= media.title %><br/>
+		<div class="actions">
+			<%= link_to 'Preview', {:action => 'show', :id => media}, :target => '_blank' %> | 
+			<%= link_to 'Edit', :action => 'edit', :id => media %> | 
+			<%= link_to 'Delete', :action => 'destroy', :id => media, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	<td width="12%"><%= media.author.username if media.author %></td>
+	<td width="12%"><%= media.media_type %></td>
+	<td width="12%"><%= media.tags.collect {|tag| tag.name }.join(", ") %></td>
+	<td width="12%"><%= media.featured_media %></td>
+	<td width="10%"><%= media.created_at.strftime("%m/%d/%y") %><br/>
+		<%= media.status %>
+	</td>
+  </tr>
+<% end %>
+<script>
+$(document).ready(function() {
+	$('tr.odd').hover(
+		function() { $('.actions').show(); },
+		function() { $('.actions').hide(); }
+	);
+});
+</script>
+<tr class="head">
+  	<th>Title</th>
+  	<th>Author</th>
+  	<th>Media Type</th>
+	<th>Tags</th>
+	<th>Featured</th>
+	<th>Date</th>
+</tr>
+</table>

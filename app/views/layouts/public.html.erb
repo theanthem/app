@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Devan Flaherty, Devan Made, since 1989" />
+		<meta name="copyright" content="Copyright 2012, The Anthem Church" />
+		<meta name="version" content="1.0" />
+		<meta name="keywords" content="The Anthem Church, Tempe, AZ" />
+		<meta name="description" content="The Anthem Church is an awesome church." />
+		<meta property="og:title" content="The Anthem Church<%= " : #{@page_title}" if @page_title %>" />
+		<meta property="og:description" content="The Anthem Church is an awesome church." />
+		<meta property="og:image" content="" />
+		<meta name="revisit-after" content="2 days" />
+		<meta name="robots" content="follow,index">
+		<title>The Anthem Church<%= ": #{@page_title}" if @page_title %></title>
+
+        <%= stylesheet_link_tag "application", "#{@page_css}", "layout", "public", "/assets/fonts/gotham/stylesheet.css", "/assets/fonts/journal/stylesheet.css" %>
+		<link rel="apple-touch-icon" href="" />
+		<link rel="icon" type="image/x-icon" href="" />
+		<link rel="shortcut icon" type="image/x-icon" href="" />
+		
+		<%= javascript_include_tag "application", "advanced", "pagination", "wysihtml5_0.3.0.min" %>
+		<!--[if IE]>
+	        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	</head>
+	<body class="public <%= @page_class %>">
+	<div class="wrapper">
+		<header>
+				<section>
+					<div id="user_info">
+						<%=raw "<div class=\"notice\">#{flash[:notice]}</div>" if flash[:notice] %>
+						<% if session[:user_id] %>
+							<%= link_to session[:username], :controller => 'users', 
+							:action => 'edit', :id => session[:user_id] %> 
+							| <%= link_to "Logout", :controller => 'access', :action => "logout" %>
+						<% end %>
+					</div>
+				</section>
+			<section>
+				<div class="row">
+					<div class="span4 left">
+						<h1 class="logo"><%=  link_to image_tag('design/logo-type.png', :alt => "Shorebreak Church"), :action => 'home' %></h1>
+						<span class="location">Kona, Hawaii</span>
+					</div>
+					<div class="span8 floatRight right">
+						<span class="amplify">amplify Jesus</span>
+						<nav>
+							<%= link_to "Jesus", :action => 'page', :id => 'jesus' %>
+							<%= link_to "Media", :action => 'page', :id => 'media' %>
+							<%= link_to "Connect", :action => 'page', :id => 'connect' %>
+							<%= link_to "Give", :action => 'page', :id => 'give' %>
+							<%= link_to "Blog", :action => 'blog' %>		
+							<%= form_tag request.path, :method => 'get', :class => 'search' do %>
+							  <% content_tag :label do %>
+								o
+							    <%= text_field_tag :search, params[:search], :placeholder => 'Search' %>
+							  <% end %>
+							<% end %>
+						</nav>	
+					</div>		
+				</div><!--close row-->
+			</section>		
+		</header>
+		<%= yield %>
+		<div class="push">&nbsp;</div>
+	</div>
+		<footer>
+			<section>
+				<div class="row" id="footerContent">
+					<div class="span4">
+						<span>Shorebreak<br/>church</span>
+					</div>
+					<div class="span8 floatRight right">
+						<nav>
+							<%= link_to "Jesus", :action => 'page', :id => 'jesus' %>
+							<%= link_to "Media", :action => 'page', :id => 'media' %>
+							<%= link_to "Connect", :action => 'page', :id => 'connect' %>
+							<%= link_to "Give", :action => 'page', :id => 'give' %>
+							<%= link_to "Blog", :action => 'blog' %>		
+							<%= form_tag request.path, :method => 'get', :class => 'search' do %>
+							  <% content_tag :label do %>
+								o
+							    <%= text_field_tag :search, params[:search], :placeholder => 'Search' %>
+							  <% end %>
+							<% end %>
+						</nav>
+					</div>	
+					<div class="span16">
+						<span class="footer_line">&nbsp;</span>
+					</div>
+					<% @twitter_status = auto_link(Twitter.user_timeline('shorebreak_kona').first.text) %>
+					<div class="span6">
+						&copy; Copyright 2012, Shorebreak Church 
+					</div>
+				</div>
+			</section>
+		</footer>
+	</body>
+</html>

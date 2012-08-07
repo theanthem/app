@@ -1,0 +1,72 @@
+<% @page_title = params[:parent_id].blank? ? 'Pages' : 'Page' %>
+<div id="pageTitle">
+	<div class="controller_navigation">
+		<%= link_to "Back To Pages", {:action => 'index'}, :class => 'back' if params[:parent_id] %>
+		<%= will_paginate @pages %>
+	</div>
+	<h1><%= params[:parent_id]? @page_title + " | " + @parent.name : @page_title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+
+<!--start form-->
+
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th>Name</th>
+    <th>Permalink</th>
+    <th>Position</th>
+	<th>Template</th>
+	<th>Updated At</th>
+	<th>Children</th>
+  </tr>
+
+<% if params[:parent_id].blank? %>
+  <% @pages.each do |page| %>
+  <tr id="page.id" class="<%= cycle('odd', 'even') %>">
+	<td width="20%"><%= link_to page.name, :action => 'edit', :id => page %><br/>
+		<div class="actions">
+			<%= link_to '+', {:action => 'new', :parent_id => page } %> |
+			<% if page.leaf? == false %>
+				<%= link_to 'View Pages', {:action => 'index', :parent_id => page } %> | 
+			<% end %>
+			<%= link_to 'Edit', :action => 'edit', :id => page %> | 
+			<%= link_to 'Delete', :action => 'destroy', :id => page, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	<td width="4%"><%= page.permalink %></td>
+	<td width="3%"><%= page.position %></td>
+	<td width="3%" class="centerText"><%= page.template %></td>
+	<td width="8%"><%= page.updated_at.strftime("%m/%d/%y") %><br/>
+		<%= page.status %>
+	</td>
+	<td width="6%"><%= page.children.size %></td>
+	</tr>
+	<% end %>
+<% else %>
+  <% @parent.children.sort_by(&:position).each do |page| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+	<td width="20%"><%= link_to page.name, :action => 'edit', :id => page %><br/>
+		<div class="actions">
+			<%= link_to 'Edit', :action => 'edit', :id => page %> | 
+			<%= link_to 'Delete', :action => 'destroy', :id => page, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	<td width="4%"><%= page.permalink %></td>
+	<td width="3%"><%= page.position %></td>
+	<td width="3%" class="centerText"><%= page.template %></td>
+	<td width="8%"><%= page.updated_at.strftime("%m/%d/%y") %><br/><%= page.status %></td>
+	<td width="6%"><%= page.children.size %></td>
+	</tr>
+	<% end %>
+<% end %>
+
+
+<tr class="head">
+  	<th>Name</th>
+    <th>Permalink</th>
+    <th>Position</th>
+	<th>Template</th>
+	<th>Updated At</th>
+	<th>Children</th>
+</tr>
+</table>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  subtitle: MyString
+  book: MyString
+  series_thumb: MyString
+  series_display: MyString
+  start_date: 2012-04-10
+  end_date: 2012-04-10
+  featured_series: false
+  status: MyString
+
+two:
+  title: MyString
+  subtitle: MyString
+  book: MyString
+  series_thumb: MyString
+  series_display: MyString
+  start_date: 2012-04-10
+  end_date: 2012-04-10
+  featured_series: false
+  status: MyString

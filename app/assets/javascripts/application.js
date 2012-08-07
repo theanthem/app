@@ -11,5 +11,26 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require jquery_nested_form
 //= require_tree .
+
+$(document).ready(function() {
+    $('.edit .actions').hide();	
+});
+
+//datepicker
+$(function() {
+	$( ".date" ).datepicker({ dateFormat: "yy-mm-dd" });
+});
+
+
+//paginate
+$(function() {
+  $(".pagination a").live("click", function() {
+    $(".pagination").html("Page is loading...");
+    $.getScript(this.href);
+    return false;
+  });
+});

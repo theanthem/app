@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Devan Flaherty, Devan Made, Since 1989" />
+		<meta name="copyright" content="Copyright 2012, The Anthem Church" />
+		<meta name="version" content="1.0" />
+		<title><%= 'The Anthem Admin | ' + @page_title ||= 'The Anthem Admin' %></title>
+
+        <%= stylesheet_link_tag "application", "access", "tables", "series", "form", "calendar", "users", "news", "/assets/fonts/gotham/stylesheet.css", "/assets/fonts/gotham/stylesheet.css", "/assets/fonts/typograph/stylesheet.css" %>
+		<link rel="apple-touch-icon" href="" />
+		<link rel="icon" type="image/png" href="" />
+		
+		<%= javascript_include_tag "application", "advanced", "pagination", "wysihtml5_0.3.0.min" %>
+		<!--[if IE]>
+	        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	</head>
+	<body class="admin <%= @page_class %>">
+		<div class="wrapper">
+		<header>
+			<div id="user_info">
+				<span class="headerChurch"><%= link_to "THE ANTHEM CHURCH", "/" %> </span>
+				<%=raw "<div class=\"notice\">#{flash[:notice]}</div>" if flash[:notice] %>
+				<% if session[:user_id] %>
+					<%= link_to session[:username], :controller => 'users', :action => 'edit', :id => session[:user_id] %> | <%= link_to "Logout", :controller => 'access', :action => "logout" %>
+				<% end %>
+			</div>
+		</header>
+			<!--sidebar-->
+			<%= render(:partial => "shared/sidebar") %>
+			<!--content-->
+			<div id="sectionWrapper">
+				<div id="pageContent">
+					<nav>
+						<ul>
+							<li><%= link_to_unless_current "Home", :controller => 'access', :action => 'dashboard' %></li>
+							<li><%= link_to_unless_current "Messages", :controller => 'series' %></li>
+							<li><%= link_to_unless_current "Pages", :controller => 'pages' %></li>
+							<li><%= link_to_unless_current "Blog", :controller => 'posts' %></li>
+							<li class="dotted">&nbsp;</li>
+							<li><%= link_to_unless_current "Everyone", :controller => 'users' %></li>
+							<li><%= link_to_unless_current "Me", :controller => 'users', :action => 'edit', :id => session[:user_id] %></li>		
+						</ul>
+						<%= form_tag request.path, :method => 'get', :class => 'search' do %>
+						  <% content_tag :label do %>
+							o
+						    <%= text_field_tag :search, params[:search], :placeholder => 'Search' %>
+						  <% end %>
+						<% end %>
+					</nav>
+					<%= yield %>
+				</div>
+			</div>
+		<div class="push">&nbsp;</div>
+		</div>
+		<footer>
+			<div id="footerContent">
+				<div>
+				<span>THE ANTHEM<br/>CHURCH</span>
+				<span class="footer_line"></span>
+				<% @twitter_status = auto_link(Twitter.user_timeline('theanthemchurch').first.text) %>
+				&copy; Copyright 2012, The Anthem Church <p class="floatRight twitter_home">Latest Tweet : <%= @twitter_status %></p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

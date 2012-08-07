@@ -1,0 +1,73 @@
+@import "values";
+table.list.series {
+	background: none;
+	border: none;
+}
+table.list.series td {
+	padding: 0;
+}
+.seriesContainer {
+	margin-left: -40px;
+}
+.series_list {
+	width: 252px;
+	margin-left: 40px;
+	float: left;
+}
+.series_list .imageBlock {
+	width: 252px;
+	height: 144px;
+	overflow: hidden;
+}
+.series_list .imageBlock a.series_thumb {
+	display: block;
+	height: 144px;
+	width: 252px;
+}
+.series_list .imageBlock a.series_thumb img {
+	width: 252px;
+	height: 144px;
+	opacity: 1;
+	transition: all .2s ease-out;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+}
+.series_list.hidden .imageBlock a.series_thumb img {
+	width: 252px;
+	height: 144px;
+	opacity: .8;
+	transition: all .2s ease-out;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+}
+.series_list .imageBlock a.series_thumb:hover img {
+	opacity: 1;
+}
+.series_list .imageBlock a.series_action_edit {
+	display: block;
+	height: 144px;
+	width: 40px;
+	right: -253px;
+	border-left: 1px solid #383838;
+	margin-top: -144px;
+	text-align: center;
+	position: relative;
+	background: $blacker;
+	color: $white;
+	text-shadow: 0 1px 1px #000;
+	transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	font: 12px/144px $regularFont;
+}
+.series_list .imageBlock:hover a.series_action_edit {
+	right: -212px;	
+}
+.series_list .imageBlock a.series_action_edit:hover {
+	color: $red;
+}
+.series_list h3 {
+	font-weight: 100;
+	font-family: $boldFont;
+	margin: 6px 0 3px;
+}

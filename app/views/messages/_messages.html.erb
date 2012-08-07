@@ -1,0 +1,45 @@
+<% @page_title = 'Messages' %>
+<div id="pageTitle">
+	<div class="controller_navigation">
+		<%= link_to 'Back to Series', {:controller => 'series', :action => 'index'}, :class => 'back'%>
+		<%= link_to "Edit " + @series.title , {:controller => 'series', :action => 'edit', :id => @series }, :class => 'back'%>
+	</div>
+	<h1><%= @series.title + "'s Messages" %></h1>
+</div>
+<div class="breaker">&nbsp;</div>	
+
+<!--start form-->
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr class="head">
+    <th>Title</th>
+    <th>Scripture</th>
+	<th>Speaker</th>
+	<th>Featured</th>
+	<th>Date</th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+	<td width="25%"><%= message.title %><br/>
+		<div class="actions">
+			<%= link_to 'View', {:action => 'show', :id => message.id, :series_id => @series.id}, :target => '_blank' %> | 
+			<%= link_to 'Edit', {:action => 'edit', :id => message.id, :series_id => @series.id }%> | 
+			<%= link_to 'Delete', {:action => 'destroy', :id => message.id, :series_id => @series.id}, :confirm => 'Are you sure?' %>
+		</div>
+	</td>
+	<td width="12%"><%= message.scripture %></td>
+	<td width="12%"><%= message.speaker.name %></td>
+	<td width="8%"><%= message.featured_message %></td>
+	<td width="10%"><%= message.air_date.try(:strftime, "%m/%d/%y") %><br/>
+		<%= message.status %>
+	</td>
+  </tr>
+<% end %>
+<tr class="head">
+  	<th>Pic + Title</th>
+    <th>Scripture</th>
+	<th>Speaker</th>
+	<th>Featured</th>
+	<th>Date</th>
+</tr>
+</table>

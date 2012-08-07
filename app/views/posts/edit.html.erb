@@ -1,0 +1,18 @@
+<% @page_title = 'Update Post' %>
+<% @page_class = 'form post edit' %>
+	
+<div id="pageTitle">
+	<div class="controller_navigation">
+		<%= link_to "Back", {:action => 'index'}, :class => 'back'%>
+	</div>
+	<h1><%= "Update : " + @post.title %></h1>
+</div>
+<div class="breaker">&nbsp;</div>
+<% @images.each do |i| %>
+<%= image_tag i.photo.url(:small), :title => "title" %>
+<%= link_to "X Remove Image", :controller => "uploads", :action => "destroy", :id => i.id, :post_id => @post.id %>
+<% end %>
+<!--start create new form-->
+	<%= nested_form_for @post, :url => {:action => 'update', :id => @post}, :html => {:multipart => true} do |f| %>
+    	<%= render(:partial => "form", :locals => {:f => f}) %>
+	<% end %>

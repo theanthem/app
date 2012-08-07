@@ -1,0 +1,147 @@
+<%= error_messages_for (@page)  %>
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="mainFormSection" width="100%">
+			<section id="page">			
+				<div class="pad<%= " edit" if @page.id %>">
+				<% if @page.id %>
+						<%= link_to( "View Page", {:action => "show", :id => @page.id }, :class => "preview") %>
+				 <% end %>
+			    	<div class="formHeadField"><%= f.text_field :name, :placeholder => "Page Title", :class => "name" %></div>
+			    	<div class="formHeadField"><%= f.label :permalink %> |<%= f.text_field :permalink, :placeholder => "Page Permalink", :class => "inlineInput" %></div>
+				</div>
+			</section>
+			<section>
+				<div class="pad">
+				<% if @page.sections.blank? %>
+					<p class="hint">You currently have no sections added to this page.<br/> Add a section by clicking the button below.</p>
+				<% end %>
+				<!--sections-->
+				<%= f.fields_for :sections, :html => {:multipart => true} do |s| %>
+					<div class="sectionContainer">
+ 						<div class="formHeadField"><%= s.label :title %> | <%= s.text_field :title, :placeholder => "Section Title", :class => "inlineInput" %></div>
+						<div class="formHeadField"><%= s.label :content_type %> | <%= s.select :content_type, ['Text', 'HTML', 'Block'], :class => "inlineInput" %></div>
+						<div class="textAreaDesc">
+							<%= s.label :content %>
+						</div>
+						<%= s.text_area :content, :placeholder => "Section Content", :class => "description", :rows => '10' %>
+						<div class="multiInput">
+							<div class="formHeadField"><label>Links</label></div>
+							<%= s.text_field :link1, :placeholder => "http://", :class => "mutliInput" %>
+							<%= s.text_field :link2, :placeholder => "http://", :class => "mutliInput" %>
+							<%= s.text_field :link3, :placeholder => "http://", :class => "mutliInput" %>
+							<%= s.text_field :link4, :placeholder => "http://", :class => "mutliInput" %>
+						</div>
+						<div class="formHeadField">
+							<%= s.label :display_image, "Display Image" %> |<%= s.file_field :section_display, :class => "inlineInput" %>
+						</div>
+						<div class="formHeadField">
+							<%= s.label :background_image, "BG Image" %> |<%= s.file_field :section_background, :class => "inlineInput" %>
+						</div>
+						<div class="formHeadField">
+							<%= s.label :status %> | <%= s.select :status, ['Draft', 'Published', 'Pending'], :class => "inlineInput" %>
+							<%= s.label :position, "Section Position", :class => "inputPush" %> | <%= s.select :position, 1..@page.sections.size + 1 %>
+						</div>				
+						<div class="sectionSpace"><%= s.link_to_remove "Remove Section", :confirm => "Are you sure you want to delete this section?" %></div>
+					</div>
+				<% end %>
+				<!--close section-->
+				<%= f.link_to_add "New Section", :sections, :class => "addSection"  %>				
+				</div>
+			</section>
+				
+			<% if @page.page_thumbnail? || @page.page_display? || @page.page_background?  %>
+			<section id="pageImages">
+				<div class="pad">
+				<% if @page.page_thumbnail? %>
+				<div class="imageBlock">
+					<%= image_tag @page.page_thumbnail.url(:thumbnail), :title => "thumbnail", :class => "thumbnail" %>	
+					<h2>Thumbnail</h2>
+				</div>
+				<% end %>
+				<% if @page.page_display? %>
+				<div class="imageBlock">
+					<%= image_tag @page.page_display.url(:thumbnail), :title => "display_image", :class => "display" %>
+					<h2>Display</h2>
+				</div>
+				<% end %>
+				<% if @page.page_background? %>
+				<div class="imageBlock">
+					<%= image_tag @page.page_background.url(:thumbnail), :title => "background_image", :class => "background" %>
+					<h2>Background</h2>
+				</div>
+				<% end %>
+				</div>
+			</section>
+			<% end %>
+			<%= link_to('Cancel', { :action => 'index'}, :confirm => 'Are you sure you want to leave this page. Any progress you made may be lost.') %>
+		</td>
+		
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
+		
+		<td class="formSidebarControls">
+			<aside class="side form right">
+				<ul>
+					<li><h2>Publish</h2>
+						<ul>
+							<li>
+								<%= f.label :status %>: <%= @page.status %><br/>
+								<%= f.select :status, ['Draft', 'Published', 'Pending'] %> 
+							</li>
+							<li>
+								<%= f.label :visibility %>: <%= @page.visibility %><br/>
+								<%= f.select :visibility, ['Visible', 'Hidden', 'Staff'] %> 
+							</li>
+							<li>
+								<%= f.label :published_at, "Published" %> on: <%= @page.published_at %><br/>
+								<%= f.text_field :published_at, :value => Date.today.strftime('%m/%d/%y'), :class => "date text" %>
+							</li>
+							<li><%= link_to( "delete", {:action => "destroy", :id => @page },:confirm => 'Are you sure you want to permanently delete this page?', :class => "delete") if @page.id %><%= submit_tag(params[:id].blank? ? "Publish" : "Update") %></li>
+						</ul>
+					</li>
+					<li><h2>Page Attributes</h2>
+						<ul>
+							<li><%= f.label :template %> | <%= f.select :template, ['Basic', 'Custom', 'Special'] %></li>
+							<li>
+							<% if params[:id] %>
+								<%= f.label :position, "Page Position" %>
+								<%= f.select :position, 1..@page_count %></li>
+							<% else  %>
+								<%= f.label :position, "Page Position" %>
+								<%= f.select :position, 1..@page_count, :selected => @page_count %></li>
+							<% end %>
+							<li>
+							<% if params[:parent_id] %>
+								<%= f.label :parent_id, "Parent" %>
+								<%= f.select :parent_id, nested_set_options(Page.roots) {|i| "#{'-' * i.level} #{i.name}"}, :selected => params[:parent_id], :include_blank => true  %>
+							<% else %>
+								<%= f.label :parent_id, "Parent" %>
+								<%= f.select :parent_id, nested_set_options(Page.roots) {|i| "#{'-' * i.level} #{i.name}"}, :include_blank => true  %>
+							<% end %>
+							</li>
+						</ul>
+					</li>
+					<li><h2>Page Images</h2>
+						<ul>
+							<li><%= f.label :page_thumbnail %><%= f.file_field :page_thumbnail %></li>
+							<li><%= f.label :page_display %><%= f.file_field :page_display %></li>
+							<li><%= f.label :page_background %><%= f.file_field :page_background %></li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
+		</td>
+	</tr>
+</table>
+<script>
+$("input").change(function() {
+	$(this).addClass("changed");
+});
+</script>
+
+<% @twitterTitle = truncate(@page.name, :length => 20) %>
+<!--bitly integration-->
+<% @twitterLink = "http://www.shorebreakchurch.com/pages/permalink" %>
+<% @twitterUpdate = "New Page #{@twitterTitle} :  " %>
+
+
