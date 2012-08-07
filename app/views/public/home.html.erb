@@ -2,28 +2,9 @@
 <% @page_title = 'Home' %>
 <% @page_class = 'home' %>
 
-<div class="banner">
-	<%= image_tag @current_series.series_thumb.url(:large), :class => "thumbnail" %>
-</div>
+
 <section>
-	<div class="row content showbox">
-		<div class="span4 left">
-			<%= link_to image_tag(@current_message.message_thumb.url(:small), :class => "thumbnail", :alt => @current_message.title + " from the " + @current_message.series.title + " series"), 
-			:action => 'message', :series_id => @current_message.series.permalink, :id => @current_message.permalink %>
-		</div>
-		<div class="span4 middle">
-			<%= link_to image_tag(@current_series.series_thumb.url(:small), :class => "thumbnail", :alt => @current_series.title), 
-			:action => 'series', :series_id => @current_series.permalink %>
-		</div>
-		<div class="span4 middle">
-			<%= link_to image_tag(@featured_series.series_thumb.url(:small), :class => "thumbnail", :alt => @featured_series.title), 
-			:action => 'series', :series_id => @featured_series.permalink %>
-		</div>
-		<div class="span4 right">
-			<%= link_to image_tag(@featured_message.message_thumb.url(:small), :class => "thumbnail", :alt => @featured_message.title + " from the " + @featured_message.series.title + " series"), 
-			:action => 'message', :series_id => @featured_message.series.permalink, :id => @featured_message.permalink %>
-		</div>
-	</div>
+
 	<div class="row rollbox-container">
 		<div class="span5">
 			<ul class="rollbox">
