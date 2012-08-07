@@ -16,7 +16,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'impressionist'
 gem 'url_shortener'
 gem 'will_paginate'
-gem "rmagick", "2.12.0", :require => 'RMagick'
+gem "rmagick"
 gem 'paperclip', "~> 3.0"
 gem 'awesome_nested_set'
 gem 'nested_form'
