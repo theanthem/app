@@ -7,6 +7,7 @@ gem 'rails', '3.2.2'
 
 gem 'pg'
 gem 'json'
+gem 'thin'
 
 gem 'nifty-generators'
 gem 'twitter'
@@ -15,7 +16,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'impressionist'
 gem 'url_shortener'
 gem 'will_paginate'
-gem 'rmagick'
+gem "rmagick", "2.12.0", :require => 'RMagick'
 gem 'paperclip', "~> 3.0"
 gem 'awesome_nested_set'
 gem 'nested_form'
