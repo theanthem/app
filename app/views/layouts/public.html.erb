@@ -14,7 +14,7 @@
 		<meta name="robots" content="follow,index">
 		<title>The Anthem Church<%= ": #{@page_title}" if @page_title %></title>
 
-        <%= stylesheet_link_tag "application", "#{@page_css}", "layout", "public", "/assets/fonts/gotham/stylesheet.css", "/assets/fonts/journal/stylesheet.css" %>
+        <%= stylesheet_link_tag "application", "#{@page_css}", "layout", "public", "/assets/fonts/gotham/stylesheet.css", "/assets/fonts/journal/stylesheet.css", :cache => true %>
 		<link rel="apple-touch-icon" href="" />
 		<link rel="icon" type="image/x-icon" href="" />
 		<link rel="shortcut icon" type="image/x-icon" href="" />
