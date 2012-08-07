@@ -1,6 +1,6 @@
 Anthem::Application.routes.draw do
 
-  root :to => 'public#index'
+  root :to => 'series#index'
   
   match 'admin', :to  => 'access#dashboard'
   match 'page/:id', :to => 'public#page'
