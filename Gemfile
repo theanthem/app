@@ -22,6 +22,7 @@ gem 'paperclip', "~> 3.0"
 gem 'awesome_nested_set'
 gem 'nested_form'
 gem 'possessive'
+gem 'heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
