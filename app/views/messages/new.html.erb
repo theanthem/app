@@ -7,7 +7,6 @@
 	</div>
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start create new form-->
 	<%= form_for :message, :url => {:action => 'create', :series_id => @series.id }, :html => {:mulitpart => true} do |f| %>

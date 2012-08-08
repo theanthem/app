@@ -3,8 +3,9 @@ class Page < ActiveRecord::Base
   has_and_belongs_to_many :editors, :class_name => "User"
   has_many :sections, :dependent => :destroy
   accepts_nested_attributes_for :sections, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  acts_as_list
   
-  attr_accessible :sections_attributes, :name, :permalink, :status, :visibility, :published_at, :template, :position, :parent_id
+  attr_accessible :sections_attributes, :name, :permalink, :status, :visibility, :published_at, :template, :position, :parent_id, :subposition
   
   has_attached_file :page_thumbnail, :styles  => { 
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},
@@ -40,7 +41,7 @@ class Page < ActiveRecord::Base
     :default_url  => "/images/:class/:attachment/default.jpg"
     
   acts_as_nested_set
-  
+    
   def self.search(search, page)
     paginate :per_page => 10, :page => page,
                :conditions => ['name like ?', "%#{search}%"], :order => 'position'
@@ -69,6 +70,7 @@ class Page < ActiveRecord::Base
   scope :hidden, where(:status => "Hidden")
   scope :staff, where(:status => "Staff")
   scope :sorted, order('pages.position ASC')
+  scope :subsorted, order('pages.subposition ASC')
   
   private
   

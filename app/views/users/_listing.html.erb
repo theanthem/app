@@ -8,7 +8,12 @@
 			<% elsif user.access_level == 7 %>
 				<% @userTitle = 'Contributor'  %>
 			<% end %>
-			<%= link_to (image_tag user.avatar.url(:medium) , :class => 'left'), :action => 'edit', :id => user %> <br />
+			<% if user.avatar.present? %>
+				<%= link_to (image_tag user.avatar.url(:medium) , :class => 'left'), :action => 'edit', :id => user %>
+			<% else %>
+				<%= link_to (image_tag avatar_url(user), :class => 'left'), :action => 'edit', :id => user %>
+			<% end %>
+			 <br />
 			<%= link_to user.name + " | " + @userTitle, {:action => 'edit', :id => user}, :class => "text" %>
 		</div>
 		<div class="userQuickInfo">

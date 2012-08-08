@@ -1,10 +1,8 @@
 <% @page_title = 'News' %>
 
-<div id="pageTitle">
-	<div class="controller_navigation">	</div>
+<div id="pageTitle" class="noctrlnav">
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start form-->
 <table class="list" cellspacing="0" cellpadding="0">
@@ -26,23 +24,15 @@
 			<%= link_to 'Delete', :action => 'destroy', :id => news, :confirm => 'Are you sure?', :method => :post %>
 		</div>
 	</td>
-	<td width="13%"><%= news.event_date.strftime("%m/%d/%y") %></td>
+	<td width="13%"><%= news.event_date.try(:strftime, "%m/%d/%y")  %></td>
 	<td width="16%"><%= mail_to news.contact_email, news.contact, :subject => news.title %></td>
-	<td width="16%"><%= news.expire_date.strftime("%m/%d/%y") %></td>
+	<td width="16%"><%= news.expire_date.try(:strftime, "%m/%d/%y")  %></td>
 	<td width="13%"><%= news.featured_news %></td>
-	<td width="10%"><%= news.created_at.strftime("%m/%d/%y") %><br/>
+	<td width="10%"><%= news.created_at.try(:strftime, "%m/%d/%y")  %><br/>
 		<%= news.status %>
 	</td>
   </tr>
 <% end %>
-<script>
-$(document).ready(function() {
-	$('tr.odd').hover(
-		function() { $('.actions').show(); },
-		function() { $('.actions').hide(); }
-	);
-});
-</script>
 <tr class="head">
     <th>Title</th>
     <th>Event Date</th>

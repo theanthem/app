@@ -1,19 +1,21 @@
 @import "values";
+
 table.list.series {
 	background: none;
 	border: none;
+	td {
+		padding: 0;
+		.seriesContainer {
+			margin-left: -40px;
+			.series_list {
+				width: 252px;
+				margin-left: 40px;
+				float: left;
+			}
+		}
+	}
 }
-table.list.series td {
-	padding: 0;
-}
-.seriesContainer {
-	margin-left: -40px;
-}
-.series_list {
-	width: 252px;
-	margin-left: 40px;
-	float: left;
-}
+
 .series_list .imageBlock {
 	width: 252px;
 	height: 144px;

@@ -3,11 +3,10 @@
 	
 <div id="pageTitle">
 	<div class="controller_navigation">
-		<%= link_to "Back", {:action => 'index'}, :class => 'back'%>
+		<%= link_to "Back to Pages", {:action => 'index'}, :class => 'back'%>
 	</div>
 	<h1><%="New Page"%></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 <!--start create new form-->
 	<% @page_title = "New Page" %>
 	<%= nested_form_for @page, :url => {:action => 'create'}, :html => {:multipart => true} do |f| %>

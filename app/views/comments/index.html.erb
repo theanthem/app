@@ -1,13 +1,9 @@
 <% @page_title = 'Comments' %>
 <% @page_class = 'list comments'%>
 
-<div id="pageTitle">
-	<div class="controller_navigation">	
-		<%= will_paginate @comments %>
-	</div>
+<div id="pageTitle" class="noctrlnav">
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start form-->
 
@@ -53,4 +49,5 @@
 	</tr>
 	</table>
 	<p><%= submit_tag("Approved") %><%= submit_tag("Spam") %></p>
+	<%= will_paginate @comments %>
 <% end %>

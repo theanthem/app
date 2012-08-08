@@ -1,11 +1,9 @@
 <% @page_title = 'Posts' %>
 <% @page_class = 'list post'%>
 
-<div id="pageTitle">
-	<div class="controller_navigation">	</div>
+<div id="pageTitle" class="noctrlnav">
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start form-->
 <table class="list" cellspacing="0" cellpadding="0">
@@ -38,14 +36,7 @@
 	</td>
   </tr>
 <% end %>
-<script>
-$(document).ready(function() {
-	$('tr.odd').hover(
-		function() { $('.actions').show(); },
-		function() { $('.actions').hide(); }
-	);
-});
-</script>
+
 <tr class="head">
   	<th>Title</th>
   	<th>Author</th>

@@ -23,6 +23,7 @@ gem 'awesome_nested_set'
 gem 'nested_form'
 gem 'possessive'
 gem 'heroku'
+gem 'acts_as_list'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   layout 'access'
   
   def index
-     @pages = Page.search(params[:search], params[:page])
+     @pages = Page.sorted.roots.search(params[:search], params[:page])
   end
   
   def show
@@ -25,6 +25,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     if @page.save
+      @page.insert_at(@page.position)
       flash[:notice] = "Page was successfully created."
       redirect_to :action => 'edit', :id => @page
     else
@@ -40,22 +41,26 @@ class PagesController < ApplicationController
     if @page.root? # Position for root pages
       @page_count = Page.roots.sort_by(&:position).size
     else @page.child? # Position for children pages
-      @page_count = @page.self_and_siblings.sort_by(&:position).size
+      @page_count = @page.self_and_siblings.sort_by(&:subposition).size
     end
   end
   
   def update  
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
+      if @page.root?
+        @page.insert_at(@page.position)
+        @page.subposition = 0
+      else 
+        @page.position = @page.parent.position
+      end
       flash[:notice] = "Page was successfully updated."
       redirect_to :action => 'edit', :id => @page
     else
-      #@page_count = @subject.pages.size
-      #@subjects = Subject.order('position ASC')
       if @page.root? # Position for root pages
         @page_count = Page.roots.sort_by(&:position).size
       else @page.child? # Position for children pages
-        @page_count = @page.self_and_siblings.sort_by(&:position).size
+        @page_count = @page.self_and_siblings.sort_by(&:subposition).size
       end
       render('edit')
     end

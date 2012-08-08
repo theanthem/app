@@ -1,12 +1,10 @@
+<% @page_title = 'New User'%>
 <% @page_class = 'manage form user'%>
 
-<div id="pageTitle">
+<div id="pageTitle" class="noctrlnav">
 	<h1><%= @page_title %></h1>
-	<div class="controller_navigation">
-	</div>
 </div>
-<div class="userlist">
-	<h2>New User</h2>
+<div style="margin-top:0!important" class="userlist">
 	<div class="showForm">
 			<% @page_title = 'New User' %>
 			<%= form_for :user, :url => {:action => 'create'}, :html => { :multipart => true } do |f| %>
@@ -14,7 +12,8 @@
 		<% end %>
 	</div>
 	<div class="userActivity">
-		<h3>Some info about adding users.</h3>
+		<h3>Adding a new user</h3>
+		<p>Adding a new user </p>
 	</div>
 	<br />
 	<%= link_to('Cancel', :action => 'index') %>

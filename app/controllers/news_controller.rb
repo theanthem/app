@@ -27,6 +27,7 @@ class NewsController < ApplicationController
     @news = News.new(params[:news])
     @page_count = News.all.size + 1
     if @news.save
+      @news.insert_at(@news.position)
       #flash
       flash[:notice] = "News Items was successfully created."
       redirect_to :action => 'edit', :id => @news.id
@@ -39,6 +40,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     @page_count = News.all.size
     if @news.update_attributes(params[:news])
+      @news.insert_at(@news.position)
       @perm = params[:permalink]
       flash[:notice] = "News was successfully updated."
       redirect_to :action => 'edit', :id => @news

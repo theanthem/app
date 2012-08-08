@@ -85,7 +85,7 @@
 					</li>
 					<li><h2>Tags</h2>
 						<ul>
-							<li><%= f.text_field :tag_list %></li>					
+							<li><%= f.text_field :tag_list, :class => "text" %></li>					
 							<% @media.tag_list.each do |tag| -%>
 							<li><%= tag %><%= link_to "X", {:action => "remove_tag", :id => @media.id, :tag => tag, :controller => "medias"}, :class => "text" %></li>
 							<% end %>

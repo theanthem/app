@@ -22,9 +22,9 @@ class Series < ActiveRecord::Base
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},
     :storage => :s3,
          :s3_credentials => {
-           :bucket            => ENV['S3_BUCKET_NAME'],
-           :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
-           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+           :bucket            => 'theanthemchurch.dev.media',#ENV['S3_BUCKET_NAME'],
+           :access_key_id     => 'AKIAI7NCNQXUGKFC6FHQ',#ENV['AWS_ACCESS_KEY_ID'],
+           :secret_access_key => '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'#ENV['AWS_SECRET_ACCESS_KEY']
          }, 
     :path => "/images/:class/:seriesname/:attachment_:style.:extension",
     :default_url  => "/images/series/:attachment/default.jpg"

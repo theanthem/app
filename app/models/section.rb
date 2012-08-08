@@ -2,6 +2,7 @@ class Section < ActiveRecord::Base
   
   belongs_to :page
   has_many :section_edits
+  acts_as_list
   
   has_attached_file :section_display, :styles  => { 
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},

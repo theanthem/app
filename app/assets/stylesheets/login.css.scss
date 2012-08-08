@@ -22,7 +22,7 @@ div.login {
 	width: 70%;
 	padding: 36px 36px;
 	margin: 72px auto 18px;
-	background: #222;
+	background: $blacker;
 	@include borderRadius(6px);
 	-moz-box-shadow: inset 0 0 16px #000000;
 	-webkit-box-shadow: inset 0 0 16px #000000;
@@ -112,13 +112,17 @@ div.login {
 	}
 }
 body.login .notice {
-	color:#444;
-	font-family:$journal;
-	font-size:44px;
-	text-align:center;
-	width:336px;
-	letter-spacing:1px;
-	text-shadow: 0 1px 1px #fff;
-	line-height:18px;
-	margin:0 auto;
+  color: $black;
+  text-align: left;
+  width: 336px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 1px #fff;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: #ddd;
+  padding: 19px;
+  font: 15px/18px $typoLight;
+  -moz-box-shadow: 0 2px 0 #ffffff,inset 0 1px 1px #999;
+  -webkit-box-shadow: 0 2px 0 #ffffff,inset 0 1px 1px #999;
+  box-shadow: 0 2px 0 #ffffff,inset 0 1px 1px #999;
 }

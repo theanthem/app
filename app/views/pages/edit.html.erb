@@ -3,12 +3,11 @@
 	
 <div id="pageTitle">
 	<div class="controller_navigation">
-		<%= link_to "Back To Pages", {:action => 'index'}, :class => 'back'%>
-		<%= link_to "Back To " + @page.parent.name, {:action => 'index', :parent_id => @page.parent.id}, :class => 'back' if @page.child?%>
+		<%= link_to "Back to Pages", {:action => 'index'}, :class => 'back'%>
+		<%= link_to "Back to " + @page.parent.name, {:action => 'index', :parent_id => @page.parent.id}, :class => 'back' if @page.child?%>
 	</div>
 	<h1><%= "Update : " + @page.name %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 <!--start create new form-->
 	<% @page_title = "Update Page" %>
 	<%= nested_form_for @page, :url => {:action => 'update', :id => @page}, :html => {:multipart => true} do |f| %>

@@ -1,16 +1,13 @@
 <% @page_title = 'Speakers' %>
 <% @page_class = 'form speakers' %>
 
-<div id="pageTitle">
-	<div class="controller_navigation">
-		<%= will_paginate @speakers %>
-	</div>
+<div id="pageTitle" class="noctrlnav">
+	<%= will_paginate @speakers %>
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start form-->
-<div class="userlist speaker">
+<div style="margin-top:18px!important" class="userlist speaker">
 <% @speakers.each do |speaker| %>
 <div class="userProf<%=cycle('', '', ' noMarg')%>">
 	<div class="userLinkTo">

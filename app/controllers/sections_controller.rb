@@ -17,6 +17,7 @@ class SectionsController < ApplicationController
     @pages = Page.order('position ASC')
     @section = Section.new(params[:section])
     if @section.save
+      @section.insert_at(@section.position)
       flash[:notice] = "Section successfully created."
       redirect_to :action => 'edit', :id => @section
     else
@@ -35,6 +36,7 @@ class SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
     if @page.update_attributes(params[:page])
+      @section.insert_at(@section.position)
       flash[:notice] = "Section was successfully updated."
       redirect_to :action => 'edit', :id => @section
     else

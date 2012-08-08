@@ -3,11 +3,10 @@
 
 <div id="pageTitle">
 	<div class="controller_navigation">
-		<%= link_to "Back to all media", {:action => 'index'}, :class => 'back'%>
+		<%= link_to "Back to All Media", {:action => 'index'}, :class => 'back'%>
 	</div>
 	<h1><%= @page_title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 
 <!--start create new form-->
 	<%= form_for :media, :url => {:action => 'create'}, :html => {:mulitpart => true} do |f| %>
