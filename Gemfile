@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,9 +15,9 @@ gem 'twitter'
 gem 'rails_autolink'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'impressionist'
-gem 'url_shortener'
 gem 'will_paginate'
 gem "rmagick"
+gem 'aws-sdk', '~> 1.3.4'
 gem 'paperclip', "~> 3.0"
 gem 'awesome_nested_set'
 gem 'nested_form'

@@ -13,9 +13,14 @@ class User < ActiveRecord::Base
   #has_and_belongs_to_many :media
   #paperclip
   has_attached_file :avatar, :styles  => { :small => "150x150>", :medium => "300x300>", :larger => "600x600>", :thumbnail => "40x40"},
-                                                  :url => "/images/users/:id/:attachment_:style.:extension",
-                                                  :path => ":rails_root/public/images/users/:id/:attachment_:style.:extension",
-                                                  :default_url  => "/images/users/default.jpg"
+      :storage => :s3,
+           :s3_credentials => {
+             :bucket            => ENV['S3_BUCKET_NAME'],
+             :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+             :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+           },
+      :path => "/images/users/:id/:attachment_:style.:extension",
+      :default_url  => "/images/users/default.jpg"
 
   
   attr_accessor :password

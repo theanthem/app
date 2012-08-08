@@ -9,14 +9,24 @@ class Series < ActiveRecord::Base
   
   has_attached_file :series_thumb, :styles  => { 
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},
-    :url => "/images/:class/:seriesname/:attachment_:style.:extension", 
-    :path => ":rails_root/public/images/:class/:seriesname/:attachment_:style.:extension",
+    :storage => :s3,
+         :s3_credentials => {
+           :bucket            => ENV['S3_BUCKET_NAME'],
+           :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+         },
+    :path => "/images/:class/:seriesname/:attachment_:style.:extension",
     :default_url  => "/images/series/:attachment/default.jpg"
     
    has_attached_file :series_display, :styles  => { 
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},
-    :url => "/images/:class/:seriesname/:attachment_:style.:extension", 
-    :path => ":rails_root/public/images/:class/:seriesname/:attachment_:style.:extension",
+    :storage => :s3,
+         :s3_credentials => {
+           :bucket            => ENV['S3_BUCKET_NAME'],
+           :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+         }, 
+    :path => "/images/:class/:seriesname/:attachment_:style.:extension",
     :default_url  => "/images/series/:attachment/default.jpg"
   
   before_save { |series| series.permalink = series.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') if series.permalink.blank?}

@@ -15,7 +15,10 @@ class CreatePosts < ActiveRecord::Migration
     end
     add_index("posts", "user_id")
     
-
+    Post.find(:all).each do |post|
+      current_count = post.comments.length
+      post.update_attribute(:comments_count, current_count)
+    end
     Post.create(:title => 'Hello World!', :permalink => 'your_first_post', :content => "This is your first post.", :status => 'Draft')
     
   end

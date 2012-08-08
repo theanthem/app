@@ -23,8 +23,13 @@ class Post < ActiveRecord::Base
   
   has_attached_file :featured_image, :styles  => { 
     :small => "260x260>", :medium => "500x500>", :large => "900x900>", :thumbnail => "126x78>"},
-    :url => "/images/:class/:year/:month/:id/:attachment_:style.:extension", 
-    :path => ":rails_root/public/images/:class/:year/:month/:id/:attachment_:style.:extension",
+    :storage => :s3,
+         :s3_credentials => {
+           :bucket            => ENV['S3_BUCKET_NAME'],
+           :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+         }, 
+    :path => "/images/:class/:year/:month/:id/:attachment_:style.:extension",
     :default_url  => "/images/:class/:attachment/default.jpg"
   
   STATUS = ['Published', 'Draft', 'Pending']
