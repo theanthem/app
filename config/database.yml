@@ -15,10 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: anthem_development
+  database: postgres://xwpwhvxubwziik:oZ3eMAof8IMyBEIkHHzaahz372@ec2-107-22-168-225.compute-1.amazonaws.com:5432/d2mgoamha42a55
   pool: 5
-  username: DevanFlaherty   
-  password: 
+  username: devan@theanthemchurch.com      
+  password: fr33dom
 
     # Connect on a TCP socket. Omitted by default since the client uses a
     # domain socket that doesn't need configuration. Windows does not have
