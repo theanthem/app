@@ -1,11 +1,11 @@
 <% @users.each do |user| %>
 	<div class="userProf<%=cycle('', '', ' noMarg')%>">
 		<div class="userLinkTo">
-			<% if user.access_level == 9 %>
+			<% if user.access_level == 3 %>
 				<% @userTitle = 'Admin'  %>
-			<% elsif user.access_level == 8 %>
+			<% elsif user.access_level == 2 %>
 				<% @userTitle = 'Editor'  %>
-			<% elsif user.access_level == 7 %>
+			<% elsif user.access_level == 1 %>
 				<% @userTitle = 'Contributor'  %>
 			<% end %>
 			<% if user.avatar.present? %>

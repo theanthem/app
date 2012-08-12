@@ -1,6 +1,5 @@
 class SectionsController < ApplicationController
   
-  before_filter :confirm_logged_in
   before_filter :find_page
   layout 'access'
   

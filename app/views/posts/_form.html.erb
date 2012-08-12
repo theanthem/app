@@ -77,7 +77,7 @@
 					</li>
 					<li><h2>Tags</h2>
 						<ul>
-							<li><%= f.text_field :tag_list %></li>					
+							<li><%= f.text_field :tag_list, :class => "text" %></li>					
 							<% @post.tag_list.each do |tag| -%>
 							<li><%= tag %><%= link_to "X", {:action => "remove_tag", :id => @post.id, :tag => tag, :controller => "posts"}, :class => "text" %></li>
 							<% end %>

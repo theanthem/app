@@ -1,5 +1,12 @@
 <% @page_title = 'Edit : ' + @user.name  %>
 <% @page_class = 'manage form user'%>
+<% if @user.access_level == 3 %>
+	<% @userTitle = 'Admin'  %>
+<% elsif @user.access_level == 2 %>
+	<% @userTitle = 'Editor'  %>
+<% elsif @user.access_level == 1 %>
+	<% @userTitle = 'Contributor'  %>
+<% end %>
 
 <div class="userlist">
 	<div class="userHead">
@@ -11,14 +18,25 @@
 			<div class="userInfo">
 				<h2><%= @user.name %></h2>
 				<span class="userEmail"><%= mail_to @user.email, @user.email %></span>
-				<span class="lastActive">Last Active 15 hours ago &bull; Access Level <%= @user.access_level %></span>
+				<% if @user.last_sign_in_at == nil %>
+					<% @last_active = "" %>
+				<% else %>
+					<% start_time =  @user.last_sign_in_at %>
+					<% end_time   =  Time.now %>
+					<% @last_active = "Last active " + distance_of_time_in_words(start_time, end_time) + " ago &bull; " %>
+				<% end %>
+				
+				<span class="lastActive"><%=raw @last_active %><%= @userTitle %></span>
 			</div>
 		<% if @user.id == session[:user_id] %>
 			<% @userName = "Your" %>
 		<% else %>
 			<% @userName = @user.first_name.possessive %>
 		<% end %>
-		<a class="update">Update <%= @userName %>  Info</a>
+		<% if current_user.access_level == 3 || current_user.id == @user.id %>
+			<a class="update">Update <%= @userName %>  Info</a>
+		<% end %>
+		
 	</div>
 	<div class="bio">
 		<h3><%= @user.name %></h3>
@@ -33,9 +51,7 @@
 		  <%= render :partial => 'form', :locals => {:f => f}  %>
 		<% end %>
 	</div>
-	<div class="userActivity">
-		<h3><%= @user.first_name.possessive %> latest activity</h3>
-	</div>
+	<br />
 	<%= link_to('Cancel', :action => 'index') %>
 </div>
 <script>

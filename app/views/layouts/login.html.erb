@@ -16,15 +16,23 @@
 		<!--[if IE]>
 	        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
+		<script>
+		$(function () {
+			if ($.browser.webkit) {
+				$("input").attr('autocomplete', 'off');
+			}
+		});
+		</script>
 	</head>
 	<body class="admin <%= @page_class %>">
+		
 		<div class="wrapper">
 			<header>
 				<div id="user_info">
 					<span class="headerChurch"><%= link_to "THE ANTHEM CHURCH", "/" %> </span>
-				<% if session[:user_id] %>
-					<%= link_to session[:username], :controller => 'users', :action => 'edit', :id => session[:user_id] %> | <%= link_to "Logout", :controller => 'access', :action => "logout" %>
-				<% end %>	
+					<% if user_signed_in? %>
+						<%= link_to current_user.username, edit_user_registration_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %>						
+					<% end %>	
 				</div>
 			</header>
 			<div class="login">

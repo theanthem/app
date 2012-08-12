@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   
+  before_filter :authenticate_user!
   before_filter :find_series
-  before_filter :confirm_logged_in
   
   layout 'access'
     

@@ -1,7 +1,5 @@
-class UsersController < ApplicationController
-
-  before_filter :confirm_logged_in
-
+class UsersController < ApplicationController 
+  before_filter :authenticate_user!
   layout 'access'
 
   def index
@@ -26,7 +24,11 @@ class UsersController < ApplicationController
   end
   def update    
     if params[:commit] == "Update"
-      @user = User.find(params[:id])
+      @user = User.find(current_user.id)
+      if params[:user][:password].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      end
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
         redirect_to :action => 'index'

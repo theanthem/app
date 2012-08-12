@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   
-  before_filter :confirm_logged_in
-  
+  before_filter :authenticate_user!  
   layout 'access'
   
   def index

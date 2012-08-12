@@ -1,5 +1,7 @@
 Anthem::Application.routes.draw do
 
+  devise_for :users, :path => "access", path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :users => "users" }
+
   root :to => 'series#index'
   
   match 'admin', :to  => 'access#dashboard'

@@ -22,8 +22,10 @@
 			<div id="user_info">
 				<span class="headerChurch"><%= link_to "THE ANTHEM CHURCH", "/" %> </span>
 				<%=raw "<div class=\"notice\">#{flash[:notice]}</div>" if flash[:notice] %>
-				<% if session[:user_id] %>
-					<%= link_to session[:username], :controller => 'users', :action => 'edit', :id => session[:user_id] %> | <%= link_to "Logout", :controller => 'access', :action => "logout" %>
+				<% if user_signed_in? %>
+					<%= link_to current_user.username, :controller => 'users', :action => 'edit', :id => current_user.id %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+				<% else %>
+					<%= link_to "Login", new_user_session_path %>
 				<% end %>
 			</div>
 		</header>
@@ -40,7 +42,7 @@
 							<li><%= link_to_unless_current "Blog", :controller => 'posts' %></li>
 							<li class="dotted">&nbsp;</li>
 							<li><%= link_to_unless_current "Everyone", :controller => 'users' %></li>
-							<li><%= link_to_unless_current "Me", :controller => 'users', :action => 'edit', :id => session[:user_id] %></li>		
+							<li><%= link_to_unless_current "Me", :controller => 'users', :action => 'edit', :id => current_user.id %></li>		
 						</ul>
 						<%= form_tag request.path, :method => 'get', :class => 'search' do %>
 						  <% content_tag :label do %>

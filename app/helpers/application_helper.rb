@@ -31,5 +31,9 @@ module ApplicationHelper
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=252&d=#{CGI.escape(default_url)}"
   end
+  
+  def user_level
+    user_access = current_user.access_level
+  end
 
 end

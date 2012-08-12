@@ -7,7 +7,6 @@
 	</div>
 	<h1><%= "Update : " + @post.title %></h1>
 </div>
-<div class="breaker">&nbsp;</div>
 <% @images.each do |i| %>
 <%= image_tag i.photo.url(:small), :title => "title" %>
 <%= link_to "X Remove Image", :controller => "uploads", :action => "destroy", :id => i.id, :post_id => @post.id %>

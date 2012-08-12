@@ -8,6 +8,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer :position, :limit => 2, :default => 0, :null => false
       t.string :visibility, :default => "Visible"
       t.date :published_at
+      t.integer :subposition, :limit => 2, :default => 0, :null => false
       t.string :status, :limit => 20, :default => "Draft", :null => false
 
       t.timestamps

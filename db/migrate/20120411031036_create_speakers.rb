@@ -15,9 +15,10 @@ class CreateSpeakers < ActiveRecord::Migration
       t.timestamps
     end
     
-    Speaker.find(:all).each do |speaker|
+    Speaker.reset_column_information
+    Speaker.find_each do |speaker|
       current_count = speaker.messages.length
-      speaker.update_attribute(:messages_count, current_count)
+      Speaker.reset_counters speaker.id, :messages
     end
     
   end
