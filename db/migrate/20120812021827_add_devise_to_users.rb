@@ -44,7 +44,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
     
-    User.create(:first_name => 'Devan', :last_name => 'Flaherty', :username => 'devanflaherty', :password => 'skywalker', :email => 'devanflaherty@me.com', :title => 'Creative Director', :bio => 'Just another creative guy, trying to change the world.', :access_level => 9, :twitter => 'devanflaherty')
+    User.create(:first_name => 'Devan', :last_name => 'Flaherty', :username => 'devanflaherty', :password => 'skywalker', :email => 'devanflaherty@me.com', :title => 'Creative Director', :bio => 'Just another creative guy, trying to change the world.', :access_level => 3, :twitter => 'devanflaherty')
   end
 
   def self.down

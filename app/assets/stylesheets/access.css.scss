@@ -239,6 +239,25 @@ body.admin {
 		color:$white;
 		text-shadow: 0px 1px 1px lighten($red, 10%);
 	}
+	input.update{
+		float: left;
+		display: inline-block;
+		background: #444444;
+		padding: 9px;
+		margin-right: 9px;
+		border: 0;
+		margin-top: 0!important;
+		color: #f1f1f1;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		cursor: pointer;
+	}
+	input.update:hover {
+	  background: #fc3d1d;
+	  color: #f1f1f1;
+	  text-shadow: 0px 1px 1px #fd684f;
+	}
 	a.preview {
 		display:block;
 		background:$black;
