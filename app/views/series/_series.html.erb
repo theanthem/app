@@ -12,7 +12,7 @@
     	<div class="series_list <%= "hidden" if series.visibility == false %>">
 			<div class="imageBlock">
 				<%= link_to image_tag(series.series_thumb.url(:small), :title => 'View messages from the series ' + series.title), {:controller => "messages", :action => "index", :series_id => series.id}, :class => "series_thumb" %>
-		        <%= link_to( "Edit", { :controller => "series", :action => "edit", :id => series.id }, :class => "series_action_edit") unless user_level == 1 %>
+		        <%= link_to( "Edit", edit_series_path(series), :class => "series_action_edit") unless user_level == 1 %>
 			</div>
 	      	<h3><%= series.title %></h3>
 			<span><%= series.start_date.strftime("%B %d, %Y") %> - <%= series.end_date.try(:strftime, "%B %d, %Y") if series.end_date != series.created_at %></span>

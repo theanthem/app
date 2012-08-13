@@ -31,13 +31,13 @@
 				<div class="comment-lead">On post <em><%= comment.post.title %></em> <%= mail_to((comment.author_email), (comment.author)) %> wrote:</div>
 				<div class="comment-text">
 					<%= truncate(comment.content, :length => 90) %>
-					<%= link_to 'view all', {:action => 'show', :id => comment} if comment.content.length > 90 %>
+					<%= link_to 'view all', comment_path(comment) if comment.content.length > 90 %>
 				</div>
 				</div>
 			</td>
 			<td><%= comment.status %></td>
 			<td><%= raw(comment.created_at.strftime('%m/%d/%y<br />%I:%m %p')) %></td>
-			<td><%= link_to "Delete", :action => "destroy", :id => comment.id %>
+			<td><%= button_to "Delete", comment, :method => :delete %>
 		</tr>
 	<% end %>
 	<tr class="head">

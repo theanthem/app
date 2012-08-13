@@ -19,11 +19,11 @@
 
 <% @posts.each do |post| %>
   <tr class="<%= cycle('odd', 'even') %>">
-	<td><%= post.title %><br/>
+	<td><%= link_to post.title, edit_post_path(post) %><br/>
 		<div class="actions">
-			<%= link_to 'Preview', {:action => 'show', :id => post}, :target => '_blank' %> | 
-			<%= link_to 'Edit', :action => 'edit', :id => post %> | 
-			<%= link_to 'Delete', :action => 'destroy', :id => post, :confirm => 'Are you sure?', :method => :post %>
+			<%= link_to 'Preview', post_path(post), :target => '_blank' %> | 
+			<%= link_to 'Edit', edit_post_path(post) %> | 
+			<%= button_to 'Delete', post,:method => :delete, :confirm => 'Are you sure?' %>
 		</div>
 	</td>
 	<td width="12%"><%= post.author.username if post.author %></td>
@@ -31,7 +31,7 @@
 	<td width="12%"><%= post.tags.collect {|tag| tag.name }.join(", ") %></td>
 	<td width="8%" class="centerText"><%= post.comments_count %></td>
 	<td width="12%"><%= post.featured_post %></td>
-	<td width="10%"><%= post.created_at.strftime("%m/%d/%y") %><br/>
+	<td width="10%"><%= post.published_at.strftime("%m/%d/%y") %><br/>
 		<%= post.status %>
 	</td>
   </tr>

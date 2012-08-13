@@ -225,7 +225,6 @@ body.admin {
 	}
 /* actions ///////////////////////////////////////*/
 	a.delete  {
-		float:left;
 		clear:both;
 		display:inline-block;
 		background:$black;
@@ -240,7 +239,6 @@ body.admin {
 		text-shadow: 0px 1px 1px lighten($red, 10%);
 	}
 	input.update{
-		float: left;
 		display: inline-block;
 		background: #444444;
 		padding: 9px;

@@ -7,7 +7,7 @@
 <div style="margin-top:0!important" class="userlist">
 	<div class="showForm">
 			<% @page_title = 'New User' %>
-		<%= form_for :user, :url => {:action => 'create'}, :html => { :multipart => true } do |f| %>
+		<%= form_for @user, :html => { :multipart => true } do |f| %>
 			<%= render :partial => 'form', :locals => {:f => f}  %>
 		<% end %>
 	</div>

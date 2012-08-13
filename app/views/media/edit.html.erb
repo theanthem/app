@@ -9,7 +9,7 @@
 </div>
 
 <!--start edit form-->
-	<%= form_for :media, :url => {:action => 'update', :id => @media}, :html => {:mulitpart => true} do |f| %>
+	<%= form_for @media, :html => {:mulitpart => true} do |f| %>
 	  	<%= render :partial => 'form', :locals => {:f => f}  %>
 	<% end %>
 

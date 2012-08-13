@@ -17,11 +17,11 @@
 
 <% @medias.each do |media| %>
   <tr class="<%= cycle('odd', 'even') %>">
-	<td><%= media.title %><br/>
+	<td><%= link_to media.title, edit_media_path(media) %><br/>
 		<div class="actions">
-			<%= link_to 'Preview', {:action => 'show', :id => media}, :target => '_blank' %> | 
-			<%= link_to 'Edit', :action => 'edit', :id => media %> | 
-			<%= link_to 'Delete', :action => 'destroy', :id => media, :confirm => 'Are you sure?', :method => :post %>
+			<%= link_to 'Preview', media_path(media), :target => '_blank' %> | 
+			<%= link_to 'Edit', edit_media_path(media) %> | 
+			<%= button_to 'Delete', media, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	</td>
 	<td width="12%"><%= media.author.username if media.author %></td>

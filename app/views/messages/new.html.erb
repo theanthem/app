@@ -9,6 +9,6 @@
 </div>
 
 <!--start create new form-->
-	<%= form_for :message, :url => {:action => 'create', :series_id => @series.id }, :html => {:mulitpart => true} do |f| %>
+	<%= form_for ([@series, @message]), :html => {:mulitpart => true} do |f| %>
 		<%= render :partial => 'form', :locals => {:f => f}  %>
 	<% end %>

@@ -9,12 +9,12 @@
 				<% @userTitle = 'Contributor'  %>
 			<% end %>
 			<% if user.avatar.present? %>
-				<%= link_to (image_tag user.avatar.url(:medium) , :class => 'left'), :action => 'edit', :id => user %>
+				<%= link_to (image_tag user.avatar.url(:medium) , :class => 'left'), edit_user_path(user) %>
 			<% else %>
-				<%= link_to (image_tag avatar_url(user), :class => 'left'), :action => 'edit', :id => user %>
+				<%= link_to (image_tag avatar_url(user), :class => 'left'), edit_user_path(user) %>
 			<% end %>
 			 <br />
-			<%= link_to user.name + " | " + @userTitle, {:action => 'edit', :id => user}, :class => "text" %>
+			<%= link_to user.name + " | " + @userTitle, edit_user_path(user), :class => "text" %>
 		</div>
 		<div class="userQuickInfo">
 			<%= mail_to user.email, "Email" %>

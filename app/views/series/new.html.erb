@@ -8,7 +8,7 @@
 	<h1><%= @page_title %></h1>
 </div>
 
-<%= form_for :series, :url => {:action => 'create'}, :html => {:multipart => true} do |f| %>
+<%= form_for @series, :html => {:multipart => true} do |f| %>
 	  <%= render :partial => 'form', :locals => {:f => f}  %>
 <% end %>
 

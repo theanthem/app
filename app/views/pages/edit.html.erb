@@ -10,7 +10,7 @@
 </div>
 <!--start create new form-->
 	<% @page_title = "Update Page" %>
-	<%= nested_form_for @page, :url => {:action => 'update', :id => @page}, :html => {:multipart => true} do |f| %>
+	<%= nested_form_for @page, :html => {:multipart => true} do |f| %>
     	<%= render :partial => "form", :locals => {:f => f} %>
 	<% end %>
 	

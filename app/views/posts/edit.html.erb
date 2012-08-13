@@ -12,6 +12,6 @@
 <%= link_to "X Remove Image", :controller => "uploads", :action => "destroy", :id => i.id, :post_id => @post.id %>
 <% end %>
 <!--start create new form-->
-	<%= nested_form_for @post, :url => {:action => 'update', :id => @post}, :html => {:multipart => true} do |f| %>
+	<%= nested_form_for @post, :html => {:multipart => true} do |f| %>
     	<%= render(:partial => "form", :locals => {:f => f}) %>
 	<% end %>

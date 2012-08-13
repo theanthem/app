@@ -78,7 +78,7 @@
 									<%= f.text_field :twitter %>
 								</li>
 								<li>
-								<%= link_to( "delete", {:action => "destroy", :id => @speaker},:confirm => 'Are you sure you want to permanently delete this speaker?', :class => "delete") if @speaker.id unless user_level >> 1 %>
+								<%= button_to( "delete", @speaker,:confirm => 'Are you sure you want to permanently delete this speaker?', :method => :delete, :class => "delete") if @speaker.id unless user_level >> 1 %>
 								<%= submit_tag(params[:id].blank? ? "Publish" : "Update", :class => "update") %></li>
 							</ul>
 						</li>

@@ -17,11 +17,11 @@
 
 <% @newsItems.each do |news| %>
   <tr class="<%= cycle('odd', 'even') %>">
-	<td><%= news.title %><br/>
+	<td><%= link_to news.title, edit_news_path(news) %><br/>
 		<div class="actions">
 			<%= link_to 'Preview', {:action => 'show', :id => news}, :target => '_blank' %> | 
-			<%= link_to 'Edit', :action => 'edit', :id => news %> | 
-			<%= link_to 'Delete', :action => 'destroy', :id => news, :confirm => 'Are you sure?', :method => :post %>
+			<%= link_to 'Edit', edit_news_path(news) %> | 
+			<%= button_to 'Delete', news, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	</td>
 	<td width="13%"><%= news.event_date.try(:strftime, "%m/%d/%y")  %></td>

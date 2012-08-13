@@ -17,14 +17,14 @@
 
 <% @pages.each do |page| %>
   <tr id="page.id" class="<%= cycle('odd', 'even') %>">
-	<td width="20%"><%= link_to page.name, :action => 'edit', :id => page %><br/>
+	<td width="20%"><%= link_to page.name, edit_page_path(page) %><br/>
 		<div class="actions">
 			<%= link_to '+', {:action => 'new', :parent_id => page } %> |
 			<% if page.leaf? == false %>
 				<%= link_to 'View Pages', {:action => 'index', :parent_id => page } %> | 
 			<% end %>
-			<%= link_to 'Edit', :action => 'edit', :id => page %> | 
-			<%= link_to 'Delete', :action => 'destroy', :id => page, :confirm => 'Are you sure?', :method => :post %>
+			<%= link_to 'Edit', edit_page_path(page) %> | 
+			<%= button_to 'Delete', page, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	</td>
 	<td width="4%"><%= page.permalink %></td>
@@ -40,7 +40,7 @@
 			<td width="20%"><%= link_to sub.name, :action => 'edit', :id => sub %><br/>
 				<div class="actions">
 					<%= link_to 'Edit', :action => 'edit', :id => sub %> | 
-					<%= link_to 'Delete', :action => 'destroy', :id => sub, :confirm => 'Are you sure?', :method => :post %>
+					<%= link_to 'Delete', page_path(sub), :confirm => 'Are you sure?', :method => :delete %>
 				</div>
 			</td>
 			<td width="4%"><%= sub.permalink %></td>

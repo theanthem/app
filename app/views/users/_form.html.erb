@@ -56,7 +56,7 @@
 							<% end %>
 							</li>
 							<li>
-							<%= link_to( "delete", {:action => "destroy", :id => @user},:confirm => 'Are you sure you want to permanently delete this user?', :class => "delete") if @user.id %>
+							<%= button_to( "delete", @user,:confirm => 'Are you sure you want to permanently delete this user?', :method => :delete, :class => "delete") if @user.id %>
 							<%= submit_tag(params[:id].blank? ? "Publish" : "Update", :class => "update") %></li>
 						</ul>
 					</li>

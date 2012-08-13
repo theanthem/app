@@ -2,9 +2,17 @@ Anthem::Application.routes.draw do
 
   devise_for :users, :path => "access", path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { :users => "users" }
 
-  root :to => 'series#index'
+  root :to => 'public#home'
+  resources :public
   
-  match 'admin', :to  => 'access#dashboard'
+  scope "/admin" do
+    resources :posts, :comments, :categories, :news, :pages, :speakers, :users, :media
+    resources :series do
+      resources :messages
+    end
+  end
+  
+  match 'admin', :to  => 'series#index'
   match 'page/:id', :to => 'public#page'
   match 'archive', :to => 'public#archive'
 
@@ -67,8 +75,8 @@ Anthem::Application.routes.draw do
   match ':series_id', :to => 'public#series'
   match ':series_id/:id', :to => 'public#message'
       
-  match 'posts/:id/remove_tag/:tag' => 'posts#remove_tag'
-  match 'messages/:id/remove_tag/:tag' => 'messages#remove_tag'
-  match 'media/:id/remove_tag/:tag' => 'media#remove_tag'
+  match 'admin/posts/:id/remove_tag/:tag' => 'posts#remove_tag'
+  match 'admin/messages/:id/remove_tag/:tag' => 'messages#remove_tag'
+  match 'admin/media/:id/remove_tag/:tag' => 'media#remove_tag'
   
 end
